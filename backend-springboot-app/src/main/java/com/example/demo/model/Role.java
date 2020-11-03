@@ -1,39 +1,40 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 @Entity
-@Table(name="roles")
 public class Role {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String name;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length=20)
-    private ERole name;
+    @ManyToMany(mappedBy = "role")
+    private List<Member> members;
 
-    public Role(){
-
-    }
-
-    public Role(ERole name){
-        this.name=name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public ERole getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(ERole name) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
+
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public Role(){
+
     }
 }
