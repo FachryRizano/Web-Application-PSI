@@ -7,8 +7,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
 
@@ -16,31 +20,34 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private DataSource dataSource;
+    //Authentication
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select email as principal, password as credentails, true from member where email=?")
+                .authoritiesByUsernameQuery("select member_email as principal, role_name as role from member_roles where member_email=?")
+                .passwordEncoder(passwordEncoder()).rolePrefix("ROLE_");
+    }
+
     //Authorization
     @Override
     protected void configure(HttpSecurity http)throws Exception{
         http.csrf().disable();
-        http.authorizeRequests().antMatchers("/register",      "/login").permitAll()
-                .antMatchers("/index").hasAnyRole("MEMBER, ADMIN")
-                .and().formLogin().loginPage("/login").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/index").hasAnyRole("MEMBER,ADMIN")
+                .and()
+                .formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/").and().logout().logoutSuccessUrl("/logout");
     }
 
-    //Authentication
-    @Autowired
-    private DataSource dataSource;
 
-    @Bean
-    //untuk mengencrypt password
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select email as principal,password as credentails, true from member where email=?")
-                .authoritiesByUsernameQuery("select member_email as principal, role_name as role from member_roles where member_email=?")
-                .passwordEncoder(passwordEncoder()).rolePrefix("ROLE_");
-    }
 }
