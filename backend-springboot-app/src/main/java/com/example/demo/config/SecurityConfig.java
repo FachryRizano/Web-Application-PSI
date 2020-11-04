@@ -7,46 +7,37 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
-    private DataSource dataSource;
-    //Authentication
+    UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder getPasswordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
+    //Authentication
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select email as principal, password as credentails, true from member where email=?")
-                .authoritiesByUsernameQuery("select member_email as principal, role_name as role from member_roles where member_email=?")
-                .passwordEncoder(passwordEncoder()).rolePrefix("ROLE_");
+        auth.userDetailsService(userDetailsService);
     }
 
     //Authorization
     @Override
     protected void configure(HttpSecurity http)throws Exception{
-        http.csrf().disable();
-        http.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/index").hasAnyRole("MEMBER,ADMIN")
-                .and()
-                .formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/").and().logout().logoutSuccessUrl("/logout");
+        http
+                .authorizeRequests()
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("USER","ADMIN")
+                .antMatchers("/").permitAll()
+                .and().formLogin();
     }
+
 
 
 
