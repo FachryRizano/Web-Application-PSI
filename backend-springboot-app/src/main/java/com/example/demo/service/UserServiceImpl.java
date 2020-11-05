@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.model.MyUserDetails;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import org.hibernate.dialect.MySQL5Dialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,8 +20,10 @@ public class UserServiceImpl implements UserDetailsService{
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsername(username);
-        user.orElseThrow(()-> new UsernameNotFoundException("Not found:" + username));
-        return user.map(MyUserDetails::new).get();
+        User user = userRepository.findByUsername(username);
+        if(user==null){
+            throw new UsernameNotFoundException("User not found");
+        }
+        return new MyUserDetails(user);
     }
 }
