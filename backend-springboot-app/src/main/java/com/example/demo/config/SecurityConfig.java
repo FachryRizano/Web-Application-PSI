@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.service.LoginEventService;
 import com.example.demo.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +19,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new UserServiceImpl();
+    public UserDetailsService userDetailsService(LoginEventService loginEventService){
+        return new UserServiceImpl(loginEventService);
     }
 
     @Bean
