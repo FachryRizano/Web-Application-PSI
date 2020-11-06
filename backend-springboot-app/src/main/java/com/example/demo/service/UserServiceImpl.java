@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.model.LogEvent;
 import com.example.demo.model.MyUserDetails;
 import com.example.demo.model.User;
+import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.UserRepository;
+import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,16 +26,10 @@ public class UserServiceImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
+
         if(user==null){
             throw new UsernameNotFoundException("User not found");
         }
-        //init timestamp di loginEvent
-        LogEvent event = new LogEvent();
-        event.setUsername(user.getUsername());
-        event.setLogin(new Timestamp(new Date().getTime()));
-        //masukkan ke dalam LoginEvent Entity
-        logEventService.save(event);
-
         return new MyUserDetails(user);
     }
 }
