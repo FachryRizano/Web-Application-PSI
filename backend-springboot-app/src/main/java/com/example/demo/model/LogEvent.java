@@ -6,19 +6,15 @@ import javax.persistence.Id;
 import java.sql.Timestamp;
 
 @Entity
-public class LoginEvent {
+public class LogEvent {
     @Id
     @GeneratedValue
     private Long id;
-
     private String username;
     private Timestamp login;
+    private Timestamp logout;
 
-    public LoginEvent(){
-
-    }
-
-    public LoginEvent(String username, Timestamp login) {
+    public LogEvent(String username, Timestamp login) {
         this.username = username;
         this.login = login;
     }
@@ -37,5 +33,13 @@ public class LoginEvent {
 
     public void setLogin(Timestamp login) {
         this.login = login;
+    }
+
+    public Timestamp getLogout() {
+        return logout;
+    }
+
+    public void setLogout(Timestamp logout) {
+        this.logout = logout;
     }
 }
