@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.LogEvent;
+import com.example.demo.model.LogEventDetails;
 import com.example.demo.model.MyUserDetails;
 import com.example.demo.model.User;
 import com.example.demo.repository.LogEventRepository;
@@ -21,15 +22,21 @@ public class UserServiceImpl implements UserDetailsService{
     private UserRepository userRepository;
 
     @Autowired
+    private LogEventRepository logEventRepository;
+
+    @Autowired
     private LogEventService logEventService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-
         if(user==null){
             throw new UsernameNotFoundException("User not found");
         }
+        LogEvent logEvent = new LogEvent();
+        logEvent.setUsername(username);
+        logEvent.setLogin(new Timestamp(new Date().getTime()));
+        logEventService.save(event);
         return new MyUserDetails(user);
     }
 }

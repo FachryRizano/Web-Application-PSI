@@ -1,5 +1,7 @@
 package com.example.demo.config;
 
+import com.example.demo.model.LogEventDetails;
+import com.example.demo.service.LogEventService;
 import com.example.demo.service.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
