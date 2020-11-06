@@ -14,6 +14,10 @@ public class LogEvent {
     private Timestamp login;
     private Timestamp logout;
 
+    public LogEvent(){
+
+    }
+
     public LogEvent(String username, Timestamp login) {
         this.username = username;
         this.login = login;

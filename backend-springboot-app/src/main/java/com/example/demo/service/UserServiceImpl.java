@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.LogEvent;
 import com.example.demo.model.MyUserDetails;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
@@ -18,7 +19,7 @@ public class UserServiceImpl implements UserDetailsService{
     private UserRepository userRepository;
 
     @Autowired
-    private LoginEventService loginEventService;
+    private LogEventService logEventService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -27,11 +28,11 @@ public class UserServiceImpl implements UserDetailsService{
             throw new UsernameNotFoundException("User not found");
         }
         //init timestamp di loginEvent
-        LoginEvent event = new LoginEvent();
+        LogEvent event = new LogEvent();
         event.setUsername(user.getUsername());
         event.setLogin(new Timestamp(new Date().getTime()));
         //masukkan ke dalam LoginEvent Entity
-        loginEventService.save(event);
+        logEventService.save(event);
 
         return new MyUserDetails(user);
     }
