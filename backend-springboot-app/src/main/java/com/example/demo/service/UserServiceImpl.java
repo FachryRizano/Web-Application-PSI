@@ -21,6 +21,8 @@ public class UserServiceImpl implements UserDetailsService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private LoginEventService loginEventService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -30,7 +32,6 @@ public class UserServiceImpl implements UserDetailsService{
         }
         //init timestamp di loginEvent
         LoginEvent event = new LoginEvent();
-        LoginEventService loginEventService = new LoginEventService();
         event.setUsername(user.getUsername());
         event.setLogin(new Timestamp(new Date().getTime()));
         //masukkan ke dalam LoginEvent Entity
