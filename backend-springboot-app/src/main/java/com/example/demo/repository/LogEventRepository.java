@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LogEventRepository extends JpaRepository<LogEvent, Long> {
-    LogEvent findByUsername(String username);
 }

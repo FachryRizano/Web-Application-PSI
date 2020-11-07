@@ -1,12 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.model.LogEvent;
-import com.example.demo.model.LogEventDetails;
 import com.example.demo.model.MyUserDetails;
 import com.example.demo.model.User;
 import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.UserRepository;
-import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -36,7 +34,7 @@ public class UserServiceImpl implements UserDetailsService{
         LogEvent logEvent = new LogEvent();
         logEvent.setUsername(username);
         logEvent.setLogin(new Timestamp(new Date().getTime()));
-        logEventService.save(event);
+        logEventService.save(logEvent);
         return new MyUserDetails(user);
     }
 }

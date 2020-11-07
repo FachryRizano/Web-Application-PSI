@@ -8,8 +8,6 @@ import java.sql.Timestamp;
 @Entity
 public class LogEvent {
     @Id
-    @GeneratedValue
-    private Long id;
     private String username;
     private Timestamp login;
     private Timestamp logout;
