@@ -1,0 +1,61 @@
+/* Global */
+a:hover {
+ text-decoration: none;
+}
+
+/* components Header */
+.componentsHeader .navbar-brand img {
+  max-height: 40px;
+}
+.componentsHeader .logoutSeparator {
+  margin-left: 1rem;
+  color: white;
+}
+.componentsHeader .logoutLink {
+  margin-right: 0 !important;
+}
+
+/* components Login */
+.componentsLoginWallpaper {
+  background-image: url("../image/login-background.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.componentsLogin {
+  background: rgba(3, 3, 3, 0.6);
+  height: 100vh;
+}
+.componentsLogin .container-sm {
+  padding-top: 10vh;
+}
+.componentsLogin .container-sm .loginFormPraweda {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.componentsLogin .container-sm .loginFormPraweda .loginFormHeader img {
+  display: block;
+  max-width: 100px;
+  margin: auto;
+  padding: 10px;
+}
+.componentsLogin .container-sm .loginFormPraweda .loginFormHeader h3 {
+  text-align: center;
+}
+.componentsLogin .container-sm .loginFormPraweda .loginFormHeader p {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-style: italic;
+}
+.componentsLogin .container-sm .loginFormPraweda button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+@media (min-width: 1200px), (min-width: 992px), (min-width: 768px), (min-width: 576px){
+  .componentsLogin .container-sm {
+  max-width: 500px;
+  }
+}

@@ -10,7 +10,6 @@ public class LogEvent {
     @Id
     private String username;
     private Timestamp login;
-    private Timestamp logout;
 
     public LogEvent(){
 
@@ -35,13 +34,5 @@ public class LogEvent {
 
     public void setLogin(Timestamp login) {
         this.login = login;
-    }
-
-    public Timestamp getLogout() {
-        return logout;
-    }
-
-    public void setLogout(Timestamp logout) {
-        this.logout = logout;
     }
 }
