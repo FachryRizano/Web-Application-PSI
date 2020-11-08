@@ -3,11 +3,22 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="role")
+@Table(name="roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
+    private ERole name;
+
+    public Role(){
+
+    }
+
+    public Role(ERole name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -17,13 +28,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
+    public ERole getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
     }
-
-    private String name;
 }
