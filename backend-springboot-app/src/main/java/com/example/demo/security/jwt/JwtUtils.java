@@ -21,7 +21,7 @@ public class JwtUtils {
     @Value("${fachry.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    public String generateJwtToke(Authentication auth){
+    public String generateJwtToken(Authentication auth){
         UserDetailsImpl userPrincipal = (UserDetailsImpl) auth.getPrincipal();
 
         return Jwts.builder()
