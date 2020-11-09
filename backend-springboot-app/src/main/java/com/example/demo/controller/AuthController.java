@@ -1,15 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.ERole;
+import com.example.demo.model.LogEvent;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.payloads.request.LoginRequest;
 import com.example.demo.payloads.request.SignUpRequest;
 import com.example.demo.payloads.response.JwtResponse;
 import com.example.demo.payloads.response.MessageResponse;
+import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.JwtUtils;
+import com.example.demo.security.services.LogEventService;
 import com.example.demo.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +24,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -41,6 +46,9 @@ public class AuthController {
     RoleRepository roleRepository;
 
     @Autowired
+    LogEventService logEventService;
+
+    @Autowired
     PasswordEncoder encoder;
 
     @Autowired
@@ -59,6 +67,12 @@ public class AuthController {
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
+
+        //record login logEvent
+        LogEvent logEvent = new LogEvent();
+        logEvent.setUsername(loginRequest.getUsername());
+        logEvent.setLogin(new Timestamp(new Date().getTime()));
+        logEventService.save(logEvent);
 
         return ResponseEntity.ok(new JwtResponse(jwt,
                 userDetails.getId(),
