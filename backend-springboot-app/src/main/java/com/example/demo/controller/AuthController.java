@@ -15,6 +15,7 @@ import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.services.LogEventService;
 import com.example.demo.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -46,13 +47,13 @@ public class AuthController {
     RoleRepository roleRepository;
 
     @Autowired
-    LogEventService logEventService;
-
-    @Autowired
     PasswordEncoder encoder;
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    LogEventService logEventService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
