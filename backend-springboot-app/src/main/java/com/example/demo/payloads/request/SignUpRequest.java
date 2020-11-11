@@ -3,7 +3,6 @@ package com.example.demo.payloads.request;
 import java.util.Set;
 
 public class SignUpRequest {
-    private String username;
     private String email;
     private String password;
 
@@ -15,14 +14,6 @@ public class SignUpRequest {
 
     public void setRole(Set<String> role) {
         this.role = role;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {

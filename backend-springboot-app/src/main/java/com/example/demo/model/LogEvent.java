@@ -5,15 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-
 @Entity
 public class LogEvent {
     @Id
     private String email;
     @Column(name = "lastLogin")
     private Timestamp login;
-    @Column(name = "")
-    private Timestamp logut;
+    @Column(name = "logoutOnClick")
+    private Timestamp logout;
     public LogEvent(){
 
     }
