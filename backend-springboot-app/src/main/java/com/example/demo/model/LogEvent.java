@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,24 +9,26 @@ import java.sql.Timestamp;
 @Entity
 public class LogEvent {
     @Id
-    private String username;
+    private String email;
+    @Column(name = "lastLogin")
     private Timestamp login;
-
+    @Column(name = "")
+    private Timestamp logut;
     public LogEvent(){
 
     }
 
-    public LogEvent(String username, Timestamp login) {
-        this.username = username;
+    public LogEvent(String email, Timestamp login) {
+        this.email = email;
         this.login = login;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Timestamp getLogin() {
