@@ -8,6 +8,7 @@ import com.example.demo.payloads.request.LoginRequest;
 import com.example.demo.payloads.request.SignUpRequest;
 import com.example.demo.payloads.response.JwtResponse;
 import com.example.demo.payloads.response.MessageResponse;
+import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.JwtUtils;
@@ -25,10 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins="*",maxAge = 3600)
@@ -54,6 +52,9 @@ public class AuthController {
     @Autowired
     LogEventService logEventService;
 
+    @Autowired
+    LogEventRepository logEventRepository;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -78,6 +79,22 @@ public class AuthController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 roles));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logoutUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(authentication == null){
+            return ResponseEntity.badRequest().body(new MessageResponse("You aren't login yet!"));
+        }
+        //ambil token gimans ?
+        String email = jwtUtils.getEmailFromJwtToken(authentication.getPrincipal().toString());
+        LogEvent logEvent = logEventRepository.findByEmail(email)
+                .orElseThrow(()->new RuntimeException("Error 666"));
+        logEvent.setLogout(new Timestamp(new Date().getTime()));
+        logEventService.save(logEvent);
+
+        return ResponseEntity.ok(new MessageResponse("You've been logout"));
     }
 
     @PostMapping("/signup")

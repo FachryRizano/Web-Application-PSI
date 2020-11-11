@@ -34,6 +34,14 @@ public class LogEvent {
         return login;
     }
 
+    public Timestamp getLogout() {
+        return logout;
+    }
+
+    public void setLogout(Timestamp logout) {
+        this.logout = logout;
+    }
+
     public void setLogin(Timestamp login) {
         this.login = login;
     }
