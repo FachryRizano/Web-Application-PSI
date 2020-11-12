@@ -81,22 +81,6 @@ public class AuthController {
                 roles));
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<?> logoutUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
-            return ResponseEntity.badRequest().body(new MessageResponse("You aren't login yet!"));
-        }
-        //ambil token gimans ?
-        String email = jwtUtils.getEmailFromJwtToken(authentication.getPrincipal().toString());
-        LogEvent logEvent = logEventRepository.findByEmail(email)
-                .orElseThrow(()->new RuntimeException("Error 666"));
-        logEvent.setLogout(new Timestamp(new Date().getTime()));
-        logEventService.save(logEvent);
-
-        return ResponseEntity.ok(new MessageResponse("You've been logout"));
-    }
-
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
