@@ -11,11 +11,11 @@ import com.example.demo.payloads.response.MessageResponse;
 import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.security.jwt.AuthTokenFilter;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.services.LogEventService;
 import com.example.demo.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -55,6 +55,9 @@ public class AuthController {
     @Autowired
     LogEventRepository logEventRepository;
 
+    @Autowired
+    AuthTokenFilter authTokenFilter;
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -79,6 +82,15 @@ public class AuthController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 roles));
+    }
+
+    @PostMapping("/logout")
+    public void logout(@RequestBody LoginRequest loginRequest){
+        String email = loginRequest.getEmail();
+        LogEvent logEvent = logEventRepository.findByEmail(email)
+                .orElseThrow(()-> new RuntimeException("can't find the email"));
+        logEvent.setLogout(new Timestamp(new Date().getTime()));
+        logEventService.save(logEvent);
     }
 
 
