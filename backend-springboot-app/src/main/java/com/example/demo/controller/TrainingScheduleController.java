@@ -28,18 +28,20 @@ public class TrainingScheduleController {
         return trainingScheduleRepository.save(trainingSchedule);
     }
 
-    //update a training schedulu
+    //update a training schedule
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-    @PutMapping("training-schedules/{name}")
-    public ResponseEntity<TrainingSchedule> updateTrainingSchedule(@PathVariable String name, @RequestBody TrainingSchedule trainingScheduleDetails){
-        TrainingSchedule trainingSchedule = trainingScheduleRepository.findByName(name)
+    @PutMapping("training-schedules/{subjectName}")
+    public ResponseEntity<TrainingSchedule> updateTrainingSchedule(@PathVariable String subjectName, @RequestBody TrainingSchedule trainingScheduleDetails){
+
+        TrainingSchedule trainingSchedule = trainingScheduleRepository.findBySubjectName(subjectName)
                 .orElseThrow(()-> new RuntimeException("can't find the training schedule"));
-        trainingSchedule.setSubjectsName(trainingScheduleDetails.getSubjectsName());
+        trainingSchedule.setSubjectName(trainingScheduleDetails.getSubjectName());
         trainingSchedule.setDuration(trainingScheduleDetails.getDuration());
         trainingSchedule.setPrice(trainingScheduleDetails.getPrice());
         trainingSchedule.setSchedules(trainingScheduleDetails.getSchedules());
         trainingScheduleRepository.save(trainingSchedule);
         return ResponseEntity.ok(trainingSchedule);
+
     }
 
 

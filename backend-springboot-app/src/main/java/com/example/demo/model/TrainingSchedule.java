@@ -6,11 +6,12 @@ import java.util.List;
 @Entity
 public class TrainingSchedule {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String code;
     private String subjectName;
-
-    private EParticipant name;
-    private int duration;
+    private EParticipant participantName;
+    private String duration;
     private int price;
 
     @ManyToMany(fetch=FetchType.LAZY)
@@ -23,12 +24,16 @@ public class TrainingSchedule {
 
     }
 
-    public TrainingSchedule(String code, String subjectName, List<Schedule> schedules, int duration, int price) {
+    public TrainingSchedule(String code, String subjectName, EParticipant participantName, String duration, int price) {
         this.code = code;
         this.subjectName = subjectName;
-        this.schedules = schedules;
+        this.participantName = participantName;
         this.duration = duration;
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getCode() {
@@ -39,27 +44,27 @@ public class TrainingSchedule {
         this.code = code;
     }
 
-    public String getSubjectsName() {
+    public String getSubjectName() {
         return subjectName;
     }
 
-    public void setSubjectsName(String subjectName) {
+    public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
     }
 
-    public List<Schedule> getSchedules() {
-        return schedules;
+    public EParticipant getParticipantName() {
+        return participantName;
     }
 
-    public void setSchedules(List<Schedule> schedules) {
-        this.schedules = schedules;
+    public void setParticipantName(EParticipant participantName) {
+        this.participantName = participantName;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -69,5 +74,13 @@ public class TrainingSchedule {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Schedule> getSchedules() {
+        return schedules;
+    }
+
+    public void setSchedules(List<Schedule> schedules) {
+        this.schedules = schedules;
     }
 }

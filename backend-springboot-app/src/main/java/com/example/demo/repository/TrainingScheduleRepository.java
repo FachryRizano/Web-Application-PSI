@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface TrainingScheduleRepository extends JpaRepository<TrainingSchedule,String> {
-    Optional<TrainingSchedule> findByName(String name);
+public interface TrainingScheduleRepository extends JpaRepository<TrainingSchedule,Long> {
+    Optional<TrainingSchedule> findBySubjectName(String subjectName);
 }
