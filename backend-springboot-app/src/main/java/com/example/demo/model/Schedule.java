@@ -1,12 +1,14 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="schedule_details")
 public class Schedule {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Date date;
     private String location;
     private String speakerName;
