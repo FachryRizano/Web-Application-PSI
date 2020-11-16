@@ -1,26 +1,30 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class TrainingSchedule {
     @Id
     private String code;
-    private String subjectsName;
-    private List<Schedule> schedules;
+    private String subjectName;
 //    private Role participant;
     private int duration;
     private int price;
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="training_schedule_with_schedule_details",
+                joinColumns = @JoinColumn(name="training_schedule_id"),
+                inverseJoinColumns = @JoinColumn(name="schedule_id"))
+    private List<Schedule> schedules;
 
     public TrainingSchedule(){
 
     }
 
-    public TrainingSchedule(String code, String subjectsName, List<Schedule> schedules, int duration, int price) {
+    public TrainingSchedule(String code, String subjectName, List<Schedule> schedules, int duration, int price) {
         this.code = code;
-        this.subjectsName = subjectsName;
+        this.subjectName = subjectName;
         this.schedules = schedules;
         this.duration = duration;
         this.price = price;
@@ -35,11 +39,11 @@ public class TrainingSchedule {
     }
 
     public String getSubjectsName() {
-        return subjectsName;
+        return subjectName;
     }
 
-    public void setSubjectsName(String subjectsName) {
-        this.subjectsName = subjectsName;
+    public void setSubjectsName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     public List<Schedule> getSchedules() {
