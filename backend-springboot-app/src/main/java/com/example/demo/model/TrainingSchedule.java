@@ -8,7 +8,8 @@ public class TrainingSchedule {
     @Id
     private String code;
     private String subjectName;
-//    private Role participant;
+
+    private EParticipant name;
     private int duration;
     private int price;
 
