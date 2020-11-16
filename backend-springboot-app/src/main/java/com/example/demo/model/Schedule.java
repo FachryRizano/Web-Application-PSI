@@ -1,9 +1,11 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
+@Table(name="schedule_details")
 public class Schedule {
     private Date date;
     private String location;
@@ -11,7 +13,7 @@ public class Schedule {
     private String linkPDF;
 
     public Schedule(){
-        
+
     }
 
     public Schedule(Date date, String location, String speakerName, String linkPDF) {
