@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 @CrossOrigin(origins = "*")
-@RequestMapping("api/test/v1/")
+@RequestMapping("api/test/")
 @RestController
 public class TrainingScheduleController {
     @Autowired
@@ -20,8 +20,8 @@ public class TrainingScheduleController {
     //get all training schedule
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @GetMapping("training-schedules")
-    public List<TrainingSchedule> getAllEmployee(){
-        return trainingScheduleRepository.findAll();
+    public ResponseEntity<List<TrainingSchedule>> getAllEmployee(){
+        return ResponseEntity.ok(trainingScheduleRepository.findAll());
     }
 
     //create a training schedule
