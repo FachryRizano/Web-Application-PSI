@@ -16,6 +16,7 @@ import BoardAdmin from "./components/board-admin.component";
 
 
 import logoWithText from './image/logo-with-text.png';
+import ListTrainingScheduleComponent from "./components/ListTrainingScheduleComponent";
 
 class App extends Component {
   constructor(props) {
@@ -124,6 +125,7 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
+              <Route path="/training-schedules" component={ListTrainingScheduleComponent}/>
             </Switch>
           </div>
         </div>

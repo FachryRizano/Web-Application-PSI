@@ -12,7 +12,6 @@ public class TrainingSchedule {
     private Long id;
     private String code;
     private String subjectName;
-    private String participant;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="ts_w_P",
@@ -23,7 +22,7 @@ public class TrainingSchedule {
     private String duration;
 
 
-    @ManyToMany(fetch=FetchType.LAZY)
+    @OneToMany(fetch=FetchType.LAZY)
     @JoinTable(name="ts_w_sd",
                 joinColumns = @JoinColumn(name="training_schedule_id"),
                 inverseJoinColumns = @JoinColumn(name="schedule_id"))
