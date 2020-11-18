@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Participant {
@@ -10,9 +12,6 @@ public class Participant {
 
     @Enumerated(EnumType.STRING)
     private EParticipant name;
-
-    public Participant() {
-    }
 
     public Long getId() {
         return id;

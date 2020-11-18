@@ -7,5 +7,6 @@ class TrainingScheduleService{
     getAllTrainingSchedule(){
         return axios.get(API_URL + 'training-schedules',{headers:authHeader()})
     }
+    
 }
 export default new TrainingScheduleService()

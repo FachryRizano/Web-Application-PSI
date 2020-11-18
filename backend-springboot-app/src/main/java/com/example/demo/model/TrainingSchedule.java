@@ -26,7 +26,7 @@ public class TrainingSchedule {
     @JoinTable(name="ts_w_sd",
                 joinColumns = @JoinColumn(name="training_schedule_id"),
                 inverseJoinColumns = @JoinColumn(name="schedule_id"))
-    private List<Schedule> schedules;
+    private Set<Schedule> schedules = new HashSet<>();
 
     public TrainingSchedule(){
 
@@ -66,16 +66,16 @@ public class TrainingSchedule {
         this.duration = duration;
     }
 
-    public List<Schedule> getSchedules() {
+    public Set<Schedule> getSchedules() {
         return schedules;
     }
 
-    public void setSchedules(List<Schedule> schedules) {
+    public void setSchedules(Set<Schedule> schedules) {
         this.schedules = schedules;
     }
 
     public Set<Participant> getParticipant() {
-        return participants;
+        return this.participants;
     }
 
     public void setParticipants(Set<Participant> participants) {
