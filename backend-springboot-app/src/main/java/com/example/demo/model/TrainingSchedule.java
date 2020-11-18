@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class TrainingSchedule {
@@ -11,8 +13,15 @@ public class TrainingSchedule {
     private String code;
     private String subjectName;
     private String participant;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="ts_w_P",
+                joinColumns = @JoinColumn(name="training_schedule_id"),
+                inverseJoinColumns = @JoinColumn(name="participant_id"))
+    private Set<Participant> participants = new HashSet<>();
+
     private String duration;
-    private int price;
+
 
     @ManyToMany(fetch=FetchType.LAZY)
     @JoinTable(name="ts_w_sd",
@@ -24,12 +33,10 @@ public class TrainingSchedule {
 
     }
 
-    public TrainingSchedule(String code, String subjectName, EParticipant participant, String duration, int price) {
+    public TrainingSchedule(String code, String subjectName, String duration) {
         this.code = code;
         this.subjectName = subjectName;
-        this.participant = participant;
         this.duration = duration;
-        this.price = price;
     }
 
     public Long getId() {
@@ -52,14 +59,6 @@ public class TrainingSchedule {
         this.subjectName = subjectName;
     }
 
-    public EParticipant getParticipant() {
-        return participant;
-    }
-
-    public void setParticipantName(EParticipant participant) {
-        this.participant = participant;
-    }
-
     public String getDuration() {
         return duration;
     }
@@ -68,19 +67,19 @@ public class TrainingSchedule {
         this.duration = duration;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public List<Schedule> getSchedules() {
         return schedules;
     }
 
     public void setSchedules(List<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    public Set<Participant> getParticipant() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
     }
 }

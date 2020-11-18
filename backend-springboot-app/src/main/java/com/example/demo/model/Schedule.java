@@ -13,16 +13,26 @@ public class Schedule {
     private String location;
     private String speakerName;
     private String linkPDF;
+    private int price;
 
     public Schedule(){
 
     }
 
-    public Schedule(Date date, String location, String speakerName, String linkPDF) {
+    public Schedule(Date date, String location, String speakerName, String linkPDF, int price) {
         this.date = date;
         this.location = location;
         this.speakerName = speakerName;
         this.linkPDF = linkPDF;
+        this.price = price;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public Date getDate() {

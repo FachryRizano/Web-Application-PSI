@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin(origins = "*")
 @RequestMapping("api/test/v1/")
 @RestController
 public class TrainingScheduleController {
@@ -40,14 +40,13 @@ public class TrainingScheduleController {
                 .orElseThrow(()-> new RuntimeException("can't find the training schedule"));
         trainingSchedule.setSubjectName(trainingScheduleDetails.getSubjectName());
         trainingSchedule.setDuration(trainingScheduleDetails.getDuration());
-        trainingSchedule.setPrice(trainingScheduleDetails.getPrice());
         trainingSchedule.setSchedules(trainingScheduleDetails.getSchedules());
         trainingScheduleRepository.save(trainingSchedule);
         return ResponseEntity.ok(new MessageResponse(trainingSchedule + "has been update"));
 
     }
-
     //delete a training schedule
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     @DeleteMapping("training-schedules/{subjectName}")
     public ResponseEntity<?> deleteTrainingSchedule(@PathVariable String subjectName){
         TrainingSchedule trainingSchedule = trainingScheduleRepository.findBySubjectName(subjectName)
