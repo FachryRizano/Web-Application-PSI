@@ -21,7 +21,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
-
     this.state = {
       showModeratorBoard: false,
       showAdminBoard: false,
@@ -41,13 +40,12 @@ class App extends Component {
     }
   }
 
-  logOut() {
-    AuthService.logout();
+  logOut(){
+    AuthService.logout(this.state.currentUser.email);
   }
 
   render() {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
-
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
