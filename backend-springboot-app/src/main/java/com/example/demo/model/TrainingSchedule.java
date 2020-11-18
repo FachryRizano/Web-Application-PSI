@@ -15,7 +15,7 @@ public class TrainingSchedule {
     private int price;
 
     @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="training_schedule_with_schedule_details",
+    @JoinTable(name="ts_w_sd",
                 joinColumns = @JoinColumn(name="training_schedule_id"),
                 inverseJoinColumns = @JoinColumn(name="schedule_id"))
     private List<Schedule> schedules;
