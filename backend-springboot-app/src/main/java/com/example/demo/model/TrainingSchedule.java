@@ -10,7 +10,7 @@ public class TrainingSchedule {
     private Long id;
     private String code;
     private String subjectName;
-    private EParticipant participantName;
+    private String participant;
     private String duration;
     private int price;
 
@@ -24,10 +24,10 @@ public class TrainingSchedule {
 
     }
 
-    public TrainingSchedule(String code, String subjectName, EParticipant participantName, String duration, int price) {
+    public TrainingSchedule(String code, String subjectName, EParticipant participant, String duration, int price) {
         this.code = code;
         this.subjectName = subjectName;
-        this.participantName = participantName;
+        this.participant = participant;
         this.duration = duration;
         this.price = price;
     }
@@ -52,12 +52,12 @@ public class TrainingSchedule {
         this.subjectName = subjectName;
     }
 
-    public EParticipant getParticipantName() {
-        return participantName;
+    public EParticipant getParticipant() {
+        return participant;
     }
 
-    public void setParticipantName(EParticipant participantName) {
-        this.participantName = participantName;
+    public void setParticipantName(EParticipant participant) {
+        this.participant = participant;
     }
 
     public String getDuration() {
