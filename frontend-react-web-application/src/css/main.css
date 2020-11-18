@@ -1,0 +1,53 @@
+/* Global */
+a:hover {
+ text-decoration: none;
+}
+
+/* Fix Default */
+.card {
+  margin-top: 0;
+}
+
+.mt-3, .my-3 {
+margin-top: 0 !important;
+}
+
+
+
+
+
+
+
+.mainContainer {
+  background-image: url("../image/login-background.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}
+
+.loginSignUpFormContainer {
+  padding-top: 10vh;
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}
+
+
+.formSignUpFormHeader {
+  text-align: center;
+}
+
+.formSignUpFormHeader img {
+  height: auto;
+  max-width: 100px;
+  margin: auto;
+}
+
+.formSignUpFormHeader h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 15px 0;
+}
