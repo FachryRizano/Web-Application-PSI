@@ -4,6 +4,10 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { Redirect } from "react-router-dom";
 import AuthService from "../services/auth.service";
+
+import logo from '../image/logo.jpg';
+
+
 const required = value => {
   if (!value) {
     return (
@@ -83,14 +87,12 @@ export default class Login extends Component {
       return <Redirect to="/"/>
     }
     return (
-      <div className="col-md-12">
+      <div className="col-md-12 loginSignUpFormContainer">
         <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
+          <div className="formSignUpFormHeader">
+            <img src={ logo } alt="Logo" className="formSignUpFormLogo"/>
+            <h3>SAMUDERA INDONESIA</h3>
+          </div>
           <Form
             onSubmit={this.handleLogin}
             ref={c => {

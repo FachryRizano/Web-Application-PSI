@@ -6,6 +6,8 @@ import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
 
+import logo from '../image/logo.jpg';
+
 const required = value => {
   if (!value) {
     return (
@@ -103,14 +105,12 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
+      <div className="col-md-12 loginSignUpFormContainer">
         <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
+          <div className="formSignUpFormHeader">
+            <img src={ logo } alt="Logo" className="formSignUpFormLogo"/>
+            <h3>SAMUDERA INDONESIA</h3>
+          </div>
           <Form
             onSubmit={this.handleRegister}
             ref={c => {
