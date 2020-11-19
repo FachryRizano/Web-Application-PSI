@@ -30,7 +30,6 @@ class ListTrainingScheduleComponent extends Component {
                                 <td>Training Subject Name</td>
                                 <td>Participants</td>
                                 <td>Schedules</td>
-                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +42,14 @@ class ListTrainingScheduleComponent extends Component {
                                         <td>{ts.duration}</td>
                                         <td>{ts.subjectName}</td>
                                         <td>{ts.participant.map(p=>p.name)}</td>
-                                        <td>{ts.schedules.map(s=>s.location + "\n")}</td>
+                                        <td>{ts.schedules.map(s=>
+                                            "Schedules \n" + 
+                                            s.date + "\n" + 
+                                            s.linkPDF + "\n" + 
+                                            s.location + "\n" +
+                                            s.price + "\n" +
+                                            s.speakerName
+                                        )}</td>
                                     </tr>
                                 )   
                             }
