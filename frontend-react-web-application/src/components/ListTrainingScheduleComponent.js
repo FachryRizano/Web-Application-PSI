@@ -13,11 +13,11 @@ class ListTrainingScheduleComponent extends Component {
             this.setState({
                 trainingSchedules : res.data      
             });
+            console.log(res.data)
         })
     }
     render() {
         return (
-            
             <div>
                  <h2 className="text-center">Training Schedule List</h2>
                 <div className="row">
@@ -29,6 +29,8 @@ class ListTrainingScheduleComponent extends Component {
                                 <td>Training Duration</td>
                                 <td>Training Subject Name</td>
                                 <td>Participants</td>
+                                <td>Schedules</td>
+                                <td></td>
                             </tr>
                         </thead>
                         <tbody>
@@ -41,6 +43,7 @@ class ListTrainingScheduleComponent extends Component {
                                         <td>{ts.duration}</td>
                                         <td>{ts.subjectName}</td>
                                         <td>{ts.participant.map(p=>p.name)}</td>
+                                        <td>{ts.schedules.map(s=>s.location + "\n")}</td>
                                     </tr>
                                 )   
                             }
