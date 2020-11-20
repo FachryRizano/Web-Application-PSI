@@ -31,42 +31,34 @@ class ListTrainingScheduleComponent extends Component {
             return (
                 <div>
                     <h2 className="text-center">Training Schedule List</h2>
-                    <div className="row">
-                        <table className="table table-striped table-bordered">
+                    <div className="table100">
+                        <table>
+
                             <thead>
-                                <tr>
-                                    <td>Training Schedule Id</td>
-                                    <td>Training Schedule Code</td>
-                                    <td>Training Duration</td>
-                                    <td>Training Subject Name</td>
-                                    <td>Participants</td>
-                                    <td>Schedules</td>
-                                </tr>
+                            <tr className="table100-head">
+                                <th className="column1">No</th>
+                                <th className="column2">Code</th>
+                                <th className="column3">Subject</th>
+                                <th className="column4">Participant</th>
+                                <th className="column6">Duration</th>
+                            </tr>
                             </thead>
+
                             <tbody>
-                                {
-                                    this.state.trainingSchedules.map(
-                                        ts=>
-                                        <tr key = {ts.id}>
-                                            <td>{ts.id}</td>
-                                            <td>{ts.code}</td>
-                                            <td>{ts.duration}</td>
-                                            <td>{ts.subjectName}</td>
-                                            <td>{ts.participant.map(p=>p.name +"\n")}</td>
-                                            <td>{ts.schedules.map(s=>
-                                                "Schedules \n" + 
-                                                s.date + "\n" + 
-                                                s.linkPDF + "\n" + 
-                                                s.location + "\n" +
-                                                s.price + "\n" +
-                                                s.speakerName
-                                            )}</td>
-                                        </tr>
-                                    )   
-                                }
+                            {this.state.trainingSchedules.map(ts=>
+                                <tr key={ts.id}>
+                                    <td className="column1">{ts.id}</td>
+                                    <td className="column2">{ts.code}</td>
+                                    <td className="column3">{ts.subjectName}</td>
+                                    <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
+                                    <td className="column5">{ts.duration}</td>
+                                </tr>
+                            )}
                             </tbody>
+
                         </table>
-                    </div>
+                    </div>      
+
                 </div>
             );
         }
