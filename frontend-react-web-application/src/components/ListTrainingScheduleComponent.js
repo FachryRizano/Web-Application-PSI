@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import TrainingScheduleService from '../services/TrainingScheduleService';
+import {Redirect} from "react-router-dom";
+import AuthService from "../services/auth.service";
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
         this.state={
-            trainingSchedules:[]
+            trainingSchedules:[],
         }
     }
 
@@ -17,12 +19,15 @@ class ListTrainingScheduleComponent extends Component {
             },
             error=>{
                 this.setState({
-                    
+
                 })
             }
             )
     }
     render() {
+        if(!AuthService.getCurrentUser()){
+            return <Redirect to="/login"/>
+        }
         return (
             <div>
                  <h2 className="text-center">Training Schedule List</h2>
