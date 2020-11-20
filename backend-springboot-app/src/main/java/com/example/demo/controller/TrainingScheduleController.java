@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.EParticipant;
-import com.example.demo.model.Participant;
-import com.example.demo.model.Schedule;
-import com.example.demo.model.TrainingSchedule;
+import com.example.demo.model.trainingSchedules.TrainingSchedule;
 import com.example.demo.payloads.response.MessageResponse;
 import com.example.demo.repository.ParticipantRepository;
 import com.example.demo.repository.ScheduleRepository;
@@ -12,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("api/test/")

@@ -1,24 +1,17 @@
-package com.example.demo.model;
+package com.example.demo.model.trainingSchedules;
+
+import com.example.demo.model.trainingSchedules.EParticipant;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="roles")
-public class Role {
+public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private ERole name;
-
-    public Role(){
-
-    }
-
-    public Role(ERole name) {
-        this.name = name;
-    }
+    private EParticipant name;
 
     public Long getId() {
         return id;
@@ -28,11 +21,11 @@ public class Role {
         this.id = id;
     }
 
-    public ERole getName() {
+    public EParticipant getName() {
         return name;
     }
 
-    public void setName(ERole name) {
+    public void setName(EParticipant name) {
         this.name = name;
     }
 }

@@ -1,8 +1,10 @@
-package com.example.demo.model;
+package com.example.demo.model.trainingSchedules;
+
+import com.example.demo.model.trainingSchedules.Participant;
+import com.example.demo.model.trainingSchedules.Schedule;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

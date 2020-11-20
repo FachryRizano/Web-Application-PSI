@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.trainingSchedules;
 
 import javax.persistence.*;
 import java.util.Date;
