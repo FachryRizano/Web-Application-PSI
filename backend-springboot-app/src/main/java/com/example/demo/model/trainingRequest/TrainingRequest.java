@@ -5,5 +5,5 @@ public class TrainingRequest {
     private int golongan;
     private String posisi;
     private String keluargaJabatan;
-    private String Level;
+    private String level;
 }

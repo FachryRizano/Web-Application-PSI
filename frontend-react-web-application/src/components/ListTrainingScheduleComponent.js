@@ -9,12 +9,18 @@ class ListTrainingScheduleComponent extends Component {
     }
 
     componentDidMount(){
-        TrainingScheduleService.getAllTrainingSchedule().then(res=>{
-            this.setState({
-                trainingSchedules : res.data      
-            });
-            console.log(res.data)
-        })
+        TrainingScheduleService.getAllTrainingSchedule().then(
+            res=>{
+                this.setState({
+                    trainingSchedules : res.data      
+                });
+            },
+            error=>{
+                this.setState({
+                    
+                })
+            }
+            )
     }
     render() {
         return (
