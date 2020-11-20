@@ -1,9 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.ERole;
-import com.example.demo.model.LogEvent;
-import com.example.demo.model.Role;
-import com.example.demo.model.User;
+import com.example.demo.model.user.ERole;
+import com.example.demo.model.logevent.LogEvent;
+import com.example.demo.model.user.Role;
+import com.example.demo.model.user.User;
 import com.example.demo.payloads.request.LoginRequest;
 import com.example.demo.payloads.request.SignUpRequest;
 import com.example.demo.payloads.response.JwtResponse;

@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.trainingSchedules;
 
 public enum EParticipant {
     ALL_LEVEL,

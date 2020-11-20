@@ -1,7 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.model.trainingSchedules;
+
+import com.example.demo.model.trainingSchedules.Participant;
+import com.example.demo.model.trainingSchedules.Schedule;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class TrainingSchedule {
@@ -10,26 +14,30 @@ public class TrainingSchedule {
     private Long id;
     private String code;
     private String subjectName;
-    private EParticipant participantName;
-    private String duration;
-    private int price;
 
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(name="training_schedule_with_schedule_details",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="ts_w_P",
+                joinColumns = @JoinColumn(name="training_schedule_id"),
+                inverseJoinColumns = @JoinColumn(name="participant_id"))
+    private Set<Participant> participants = new HashSet<>();
+
+    private String duration;
+
+
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="ts_w_sd",
                 joinColumns = @JoinColumn(name="training_schedule_id"),
                 inverseJoinColumns = @JoinColumn(name="schedule_id"))
-    private List<Schedule> schedules;
+    private Set<Schedule> schedules = new HashSet<>();
 
     public TrainingSchedule(){
 
     }
 
-    public TrainingSchedule(String code, String subjectName, EParticipant participantName, String duration, int price) {
+    public TrainingSchedule(String code, String subjectName, String duration) {
         this.code = code;
         this.subjectName = subjectName;
-        this.participantName = participantName;
         this.duration = duration;
-        this.price = price;
     }
 
     public Long getId() {
@@ -52,14 +60,6 @@ public class TrainingSchedule {
         this.subjectName = subjectName;
     }
 
-    public EParticipant getParticipantName() {
-        return participantName;
-    }
-
-    public void setParticipantName(EParticipant participantName) {
-        this.participantName = participantName;
-    }
-
     public String getDuration() {
         return duration;
     }
@@ -68,19 +68,19 @@ public class TrainingSchedule {
         this.duration = duration;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public List<Schedule> getSchedules() {
+    public Set<Schedule> getSchedules() {
         return schedules;
     }
 
-    public void setSchedules(List<Schedule> schedules) {
+    public void setSchedules(Set<Schedule> schedules) {
         this.schedules = schedules;
+    }
+
+    public Set<Participant> getParticipant() {
+        return this.participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
     }
 }
