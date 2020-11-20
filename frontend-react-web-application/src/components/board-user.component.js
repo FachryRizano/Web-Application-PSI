@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import {Redirect} from "react-router-dom";
+import authService from "../services/auth.service";
 import UserService from "../services/user.service";
 
 export default class BoardUser extends Component {
@@ -32,12 +33,16 @@ export default class BoardUser extends Component {
   }
 
   render() {
-    return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
-      </div>
-    );
+    if(authService.getCurrentUser()==null){
+      return <Redirect to="/login"/>
+    }else{
+      return (
+          <div className="container">
+            <header className="jumbotron">
+              <h3>{this.state.content}</h3>
+            </header>
+          </div>
+      );
+    }
   }
 }
