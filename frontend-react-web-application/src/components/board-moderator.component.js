@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {Redirect} from "react-router-dom";
 import UserService from "../services/user.service";
 
 export default class BoardModerator extends Component {
@@ -12,6 +11,7 @@ export default class BoardModerator extends Component {
   }
 
   componentDidMount() {
+    
     UserService.getModeratorBoard().then(
       response => {
         this.setState({
@@ -32,9 +32,6 @@ export default class BoardModerator extends Component {
   }
 
   render() {
-    if(this.state.getCurrentUser==null){
-      return <Redirect to="/login"/>
-    }else{
       return (
         <div className="container">
           <header className="jumbotron">
@@ -43,5 +40,4 @@ export default class BoardModerator extends Component {
         </div>
       );
     }
-  }
 }

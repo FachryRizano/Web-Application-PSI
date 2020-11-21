@@ -1,9 +1,8 @@
 package com.example.demo.model.user.userdetails;
 
-import org.springframework.security.core.userdetails.User;
+import com.example.demo.model.user.User;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -25,9 +24,9 @@ public class UserDetails {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "ud_w_u",
-    joinColumns = @JoinColumn(name = "user_details_nik"),
-    inverseJoinColumns =@JoinColumn(name="users_id") )
-    private Set<User> users = new HashSet<>();
+        joinColumns = @JoinColumn(name = "user_details_nik"),
+        inverseJoinColumns =@JoinColumn(name="users_id"))
+    private User user;
 
     public UserDetails(){
 
@@ -142,11 +141,11 @@ public class UserDetails {
         this.pichHC = pichHC;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
     public void setUsers(Set<User> users) {
-        this.users = users;
+        this.user = user;
     }
 }
