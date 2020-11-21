@@ -125,7 +125,7 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
-              <Route path="/training-schedules" component={ListTrainingSchedule}/>
+              <Route exact path="/training-schedules" render={props=><ListTrainingSchedule currentUser={this.state.currentUser} {...props}/>}/>
             </Switch>
           </div>
         </div>

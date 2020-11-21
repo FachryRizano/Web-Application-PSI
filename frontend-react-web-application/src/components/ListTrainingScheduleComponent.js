@@ -20,6 +20,7 @@ class ListTrainingScheduleComponent extends Component {
                 this.setState({
                     trainingSchedules : res.data      
                 });
+                console.log(res.data)
             }
             )
         }
@@ -52,6 +53,27 @@ class ListTrainingScheduleComponent extends Component {
                                     <td className="column3">{ts.subjectName}</td>
                                     <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                                     <td className="column5">{ts.duration}</td>
+                                    {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown, 
+                                     yang penting udah masuk datanya dari backend*/}
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <table>
+                                                <tbody>
+                                                    {ts.schedules.map(s=>
+                                                        <tr key={s.id}>
+                                                            <td>{s.date}</td>
+                                                            <td>{s.location}</td>
+                                                            <td>{s.speakerName}</td>
+                                                            <td>{s.price}</td>
+                                                            <td>{s.linkPDF}</td>
+                                                        </tr>)}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </tr>
                             )}
                             </tbody>
