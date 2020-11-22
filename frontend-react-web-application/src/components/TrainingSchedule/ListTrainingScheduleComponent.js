@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TrainingScheduleService from '../services/TrainingScheduleService';
+import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
 import {Redirect} from "react-router-dom";
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth/auth.service";
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -57,7 +57,7 @@ class ListTrainingScheduleComponent extends Component {
                                      yang penting udah masuk datanya dari backend*/}
                                      
                                     {/* bisa jadi component sendiri */}
-                                    <div class="dropdown">
+                                    <div className="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Dropdown button
                                         </button>
