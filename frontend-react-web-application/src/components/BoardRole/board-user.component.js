@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import UserService from "../services/user.service";
+import {Redirect} from "react-router-dom";
+import authService from "../../services/auth/auth.service";
+import UserService from "../../services/User/user.service";
 
-export default class BoardAdmin extends Component {
+export default class BoardUser extends Component {
   constructor(props) {
     super(props);
 
@@ -11,7 +13,7 @@ export default class BoardAdmin extends Component {
   }
 
   componentDidMount() {
-    UserService.getAdminBoard().then(
+    UserService.getUserBoard().then(
       response => {
         this.setState({
           content: response.data
@@ -31,6 +33,9 @@ export default class BoardAdmin extends Component {
   }
 
   render() {
+    if(authService.getCurrentUser()==null){
+      return <Redirect to="/login"/>
+    }else{
       return (
           <div className="container">
             <header className="jumbotron">
@@ -39,4 +44,5 @@ export default class BoardAdmin extends Component {
           </div>
       );
     }
+  }
 }

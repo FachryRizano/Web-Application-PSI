@@ -55,6 +55,8 @@ class ListTrainingScheduleComponent extends Component {
                                     <td className="column5">{ts.duration}</td>
                                     {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown, 
                                      yang penting udah masuk datanya dari backend*/}
+                                     
+                                    {/* bisa jadi component sendiri */}
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Dropdown button
