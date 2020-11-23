@@ -22,10 +22,8 @@ public class UserDetails {
     private String kota;
     private String pichHC;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "ud_w_u",
-        joinColumns = @JoinColumn(name = "user_details_nik"),
-        inverseJoinColumns =@JoinColumn(name="users_id"))
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "userDetails")
+    @JoinColumn(name = "users_id", nullable = false)
     private User user;
 
     public UserDetails(){
@@ -145,7 +143,7 @@ public class UserDetails {
         return user;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

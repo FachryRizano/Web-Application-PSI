@@ -4,12 +4,14 @@ import com.example.demo.model.user.ERole;
 import com.example.demo.model.logevent.LogEvent;
 import com.example.demo.model.user.Role;
 import com.example.demo.model.user.User;
+import com.example.demo.model.user.userdetails.UserDetails;
 import com.example.demo.payloads.request.LoginRequest;
 import com.example.demo.payloads.request.SignUpRequest;
 import com.example.demo.payloads.response.JwtResponse;
 import com.example.demo.payloads.response.MessageResponse;
 import com.example.demo.repository.LogEventRepository;
 import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.UserDetailsRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.AuthTokenFilter;
 import com.example.demo.security.jwt.JwtUtils;
@@ -35,29 +37,29 @@ import java.util.stream.Collectors;
 public class AuthController {
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
-    JwtUtils jwtUtils;
+    private JwtUtils jwtUtils;
 
     @Autowired
-    LogEventService logEventService;
+    private LogEventService logEventService;
 
     @Autowired
-    LogEventRepository logEventRepository;
+    private LogEventRepository logEventRepository;
 
     @Autowired
-    AuthTokenFilter authTokenFilter;
-
+    private AuthTokenFilter authTokenFilter;
+    
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 

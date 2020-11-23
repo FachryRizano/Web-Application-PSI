@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
-import ScheduleDetails from './ScheduleDetails';
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -20,7 +19,7 @@ class ListTrainingScheduleComponent extends Component {
             res=>{
                 this.setState({
                     trainingSchedules : res.data      
-                });
+                },()=>console.log(this.state.trainingSchedules));
             }
             )
         }
@@ -59,7 +58,6 @@ class ListTrainingScheduleComponent extends Component {
                                      yang penting udah masuk datanya dari backend*/}
                                      
                                     {/* bisa jadi component sendiri */}
-                                    <ScheduleDetails schedules={ts.schedules}/>
                                 </tr>
                             )}
                             </tbody>

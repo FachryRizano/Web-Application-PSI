@@ -6,23 +6,30 @@ class TrainingRequestComponent extends Component {
         super(props);
         this.state={
             currentUser : authService.getCurrentUser(),
-            userDetails:null
+            userDetails:[]
         }
     }
 
-    componentDidMount(){
-        console.log(this.state.currentUser)
-        TrainingRequestService.getSomething().then(res=>{
-            this.setState({
-                userDetails:res.data
-            })
-            console.log(res.data)
-        })
+    componentDidMount() {
+        if(this.state.getCurrentUser == null){
+            return 
+        }else{
+        TrainingRequestService.getUserDetails().then(
+            res=>{
+                this.setState({
+                    userDetails : res.data      
+                },()=>console.log(localStorage));
+            }
+            
+            )
+        }
+        console.log(this.state.userDetails)
     }
+
     render() {
         return (
             <div>
-                
+                <p>Password</p>
             </div>
         );
     }
