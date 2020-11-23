@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
+import ScheduleDetails from './ScheduleDetails';
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -20,7 +21,6 @@ class ListTrainingScheduleComponent extends Component {
                 this.setState({
                     trainingSchedules : res.data      
                 });
-                console.log(res.data)
             }
             )
         }
@@ -36,13 +36,14 @@ class ListTrainingScheduleComponent extends Component {
                         <table>
 
                             <thead>
-                            <tr className="table100-head">
-                                <th className="column1">No</th>
-                                <th className="column2">Code</th>
-                                <th className="column3">Subject</th>
-                                <th className="column4">Participant</th>
-                                <th className="column6">Duration</th>
-                            </tr>
+                                <tr className="table100-head">
+                                    <th className="column1">No</th>
+                                    <th className="column2">Code</th>
+                                    <th className="column3">Subject</th>
+                                    <th className="column4">Participant</th>
+                                    <th className="column6">Duration</th>
+                                    <th className="column7">Schedule</th>
+                                </tr>
                             </thead>
 
                             <tbody>
@@ -57,25 +58,7 @@ class ListTrainingScheduleComponent extends Component {
                                      yang penting udah masuk datanya dari backend*/}
                                      
                                     {/* bisa jadi component sendiri */}
-                                    <div className="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <table>
-                                                <tbody>
-                                                    {ts.schedules.map(s=>
-                                                        <tr key={s.id}>
-                                                            <td>{s.date}</td>
-                                                            <td>{s.location}</td>
-                                                            <td>{s.speakerName}</td>
-                                                            <td>{s.price}</td>
-                                                            <td>{s.linkPDF}</td>
-                                                        </tr>)}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                    <ScheduleDetails schedules={ts.schedules}/>
                                 </tr>
                             )}
                             </tbody>
