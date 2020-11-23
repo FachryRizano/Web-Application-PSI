@@ -1,7 +1,7 @@
 package com.example.demo.model.user.userdetails;
 
 import javax.persistence.*;
-
+@Entity
 public class Kaos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

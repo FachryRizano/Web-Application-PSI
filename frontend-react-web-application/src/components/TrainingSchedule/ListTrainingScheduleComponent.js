@@ -33,6 +33,7 @@ class ListTrainingScheduleComponent extends Component {
                 <div>
                     <h2 className="text-center">Training Schedule List</h2>
                     <div className="table100">
+                        
                         <table>
 
                             <thead>
@@ -64,6 +65,7 @@ class ListTrainingScheduleComponent extends Component {
                             </tbody>
 
                         </table>
+
                     </div>      
 
                 </div>

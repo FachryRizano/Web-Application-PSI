@@ -16,6 +16,7 @@ import BoardAdmin from "./components/BoardRole/board-admin.component";
 
 import logoWithText from './image/logo-with-text.png';
 import ListTrainingSchedule from "./components/TrainingSchedule/ListTrainingScheduleComponent";
+import TrainingRequestComponent from "./components/TrainingSchedule/TrainingRequestComponent";
 
 class App extends Component {
   constructor(props) {
@@ -83,6 +84,9 @@ class App extends Component {
               <Link to={"/training-schedules"} className="nav-link">
                 TrainingSchedule
               </Link>
+              <Link to={"/training-request"} className="nav-link">
+                TrainingRequest
+              </Link>
             </li>
           )}
           
@@ -116,6 +120,7 @@ class App extends Component {
               <Route path="/mod" component={BoardModerator} />
               <Route path="/admin" component={BoardAdmin} />
               <Route exact path="/training-schedules" component={ListTrainingSchedule}/>
+              <Route exact path="/training-request" component={TrainingRequestComponent}/>
             </Switch>
           </div>
         </div>

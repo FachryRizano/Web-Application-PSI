@@ -1,25 +1,15 @@
 package com.example.demo.model.trainingRequest;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.time.Year;
 
+@Entity
 public class TrainingRequest {
+    @Id
     private Long id;
-    //Userdetails sepertinya entity sendiri
-    /*
-    - Nama
-    - Golongan
-    - NIK
-    - Posisi
-    - Keluarga Jabatan
-    - Level
-    - No HP
-    - Ukuran Kaos
-    - Entitas
-    - Divisi
-    - Kota
-    - PIC HC
-    * */
-    //Periode
     private Year periode;
+    private String subject;
+    
 
 }
