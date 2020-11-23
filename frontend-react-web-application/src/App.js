@@ -36,7 +36,6 @@ class App extends Component {
         showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
-    console.log(localStorage)
   }
   logOut(){
     AuthService.logout(this.state.currentUser.email);

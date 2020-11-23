@@ -23,7 +23,7 @@ public class UserDetails {
     private String pichHC;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "userDetails")
-    @JoinColumn(name = "users_id", nullable = false)
+    @JoinColumn(name = "users_id")
     private User user;
 
     public UserDetails(){

@@ -11,19 +11,11 @@ class TrainingRequestComponent extends Component {
     }
 
     componentDidMount() {
-        if(this.state.getCurrentUser == null){
-            return 
-        }else{
         TrainingRequestService.getUserDetails().then(
             res=>{
-                this.setState({
-                    userDetails : res.data      
-                },()=>console.log(localStorage));
+                console.log(res);
             }
-            
             )
-        }
-        console.log(this.state.userDetails)
     }
 
     render() {
