@@ -22,9 +22,6 @@ public class UserDetails {
     private String kota;
     private String pichHC;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,mappedBy = "userDetails")
-    @JoinColumn(name = "users_id")
-    private User user;
 
     public UserDetails(){
 
@@ -139,11 +136,4 @@ public class UserDetails {
         this.pichHC = pichHC;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

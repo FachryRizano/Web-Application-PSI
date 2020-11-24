@@ -3,25 +3,23 @@ import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 class TrainingRequestComponent extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state={
-            currentUser : authService.getCurrentUser(),
-            userDetails:[]
+            user:authService.getCurrentUser()
         }
     }
 
-    componentDidMount() {
-        TrainingRequestService.getUserDetails().then(
-            res=>{
-                console.log(res);
-            }
-            )
+    componentDidMount(){
+        TrainingRequestService.getUserDetails()
+            .then(res=>{
+                console.log(res.data)
+            })
     }
 
     render() {
         return (
-            <div>
-                <p>Password</p>
+            <div className="container">
+                <h3>Password</h3>
             </div>
         );
     }
