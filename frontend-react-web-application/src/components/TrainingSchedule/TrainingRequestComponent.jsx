@@ -10,7 +10,8 @@ class TrainingRequestComponent extends Component {
     }
 
     componentDidMount(){
-        TrainingRequestService.getUserDetails()
+        // console.log(localStorage.getItem("user"))
+        TrainingRequestService.getUserDetails(this.state.user.id)
             .then(res=>{
                 console.log(res.data)
             })
