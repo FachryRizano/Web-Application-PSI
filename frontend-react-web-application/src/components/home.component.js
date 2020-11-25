@@ -46,14 +46,34 @@ export default class Home extends Component {
                 <th className="column5">Duration</th>
               </tr>
             </thead>
+
+
+
+
+
             <tbody>
-              <tr>
+              <tr className="table100-row" onclick="toggle_visibility()">
                 <td className="column1">1</td>
                 <td className="column2">AI-001</td>
                 <td className="column3">Samudera Indonesia Code of Ethnic & Conduct</td>
                 <td className="column4">All Level</td>
                 <td className="column5">2 hari</td>
               </tr>
+
+
+
+
+              <tr className="table100-row-child">
+                <td className="column1">06-01-2020</td>
+                <td className="column2">SICU LEARNING CENTER</td>
+                <td className="column3">DIYAN GEUMALA</td>
+                <td className="column4">IDR 40,000-</td>
+                <td className="column5">Icon Download</td>
+              </tr>
+
+
+
+
               <tr>
                 <td className="column1">2</td>
                 <td className="column2">AI-002</td>
