@@ -1,5 +1,7 @@
 package com.example.demo.model.user;
 
+import com.example.demo.model.user.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -20,6 +22,10 @@ public class User {
                 joinColumns = @JoinColumn(name="user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_details_nik")
+    private UserDetails userDetails;
 
     public User(){
 
@@ -56,6 +62,18 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 }
 
