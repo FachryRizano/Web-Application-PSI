@@ -106,18 +106,31 @@ background: #36304a;
 .table100 .column1 {
   padding-left: 40px;
 }
-.table100 .column1,
-.table100 .column2,
-.table100 .column3,
-.table100 .column4,
-.table100 .column5 {
-}
-.table100 .column5 {
+.table100 .column6 {
   padding-right: 40px;
 }
 
-
-
+.table100 .column1 {
+  width: 15%;
+}
+.table100 .column2 {
+  width: 10%;
+}
+.table100 .column3 {
+  width: 40%;
+}
+.table100 .column4 {
+  width: 15%;
+}
+.table100 .column5 {
+  width: 10%;
+}
+.table100 .column6 {
+  width: 10%;
+}
+.table100 .column6 img {
+  max-width: 25px;
+}
 
 .table100 table tbody tr {
   height: 50px;
