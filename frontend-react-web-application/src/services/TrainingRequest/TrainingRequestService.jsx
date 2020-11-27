@@ -6,5 +6,9 @@ class TrainingRequestService{
     getUserDetails(id){
         return axios.get(API_URL + 'training-request/' + id, {headers:authHeader()});
     }
+
+    sendTrainingRequest(trainingRequest){
+        return axios.post(API_URL + 'training-request/',{headers:authHeader()});
+    }
 }
 export default new TrainingRequestService()

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
+
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
         this.state={
             trainingSchedules:[],
-            getCurrentUser:AuthService.getCurrentUser()
+            getCurrentUser:AuthService.getCurrentUser(),
+            detailsShown:[]
         }
     }
 
@@ -24,12 +26,29 @@ class ListTrainingScheduleComponent extends Component {
             )
         }
     }
+
+    handleToggleShown= id=>{
+        const shownState = this.state.detailsShown.slice();
+        const index = shownState.indexOf(id);
+        if(index>=0){
+            shownState.splice(index,1);
+            this.setState({
+                detailsShown:shownState
+            })
+        }else{
+            shownState.push(id);
+            this.setState({
+                detailsShown:shownState
+            })
+        }
+    }
+
     render() {
         if(this.state.getCurrentUser==null){
             return <Redirect to="/login"/>
         }else{
             return (
-                <div>
+                <>
                     <h2 className="text-center">Training Schedule List</h2>
                     <div className="table100">
                         
@@ -45,7 +64,7 @@ class ListTrainingScheduleComponent extends Component {
                                 </tr>
                             </thead>
                             {this.state.trainingSchedules.map(ts=>
-                                <tbody keys={ts.id}>
+                            <tbody keys={ts.id}>
                                 
                                     <tr>
                                         <td className="column1">{ts.id}</td>
@@ -56,22 +75,39 @@ class ListTrainingScheduleComponent extends Component {
                                         {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown, 
                                         yang penting udah masuk datanya dari backend*/}
                                     </tr>
-                                    {ts.schedules.map(s=>
-                                        <tr keys={s.id}>
+                                    <tr>
+                                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={()=>this.handleToggleShown(ts.id)}>Schedule</button>
+                                    </tr>
+                                    <>
+                                    {this.state.detailsShown.includes(ts.id) && (
+                                        ts.schedules.map(s=>
+                                            <tr keys={s.id}>
+                                                <td>{s.date}</td>
+                                                <td>{s.location}</td>
+                                                <td>{s.speakerName}</td>
+                                                <td>{s.price}</td>
+                                                <td>{s.linkPDF}</td>
+                                            </tr>   
+                                        )
+                                    )}
+                                    {/* {ts.schedules.map(s=>
+                                        <tr keys={s.id} onClick={this.handleDrop}>
                                             <td>{s.date}</td>
                                             <td>{s.location}</td>
                                             <td>{s.speakerName}</td>
                                             <td>{s.price}</td>
                                             <td>{s.linkPDF}</td>
                                         </tr>   
-                                    )}
-                                </tbody>
+                                    )} */}
+                                    </>
+                            
+                            </tbody>
                             )}
                         </table>
 
                     </div>      
 
-                </div>
+                </>
             );
         }
 
