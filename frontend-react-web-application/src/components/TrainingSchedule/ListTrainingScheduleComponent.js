@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component , Fragment} from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
@@ -78,7 +78,8 @@ class ListTrainingScheduleComponent extends Component {
                                     <tr>
                                         <button type="button" className="btn btn-primary btn-lg btn-block" onClick={()=>this.handleToggleShown(ts.id)}>Schedule</button>
                                     </tr>
-                                    <>
+
+                                    <Fragment>
                                     {this.state.detailsShown.includes(ts.id) && (
                                         ts.schedules.map(s=>
                                             <tr keys={s.id}>
@@ -86,20 +87,13 @@ class ListTrainingScheduleComponent extends Component {
                                                 <td>{s.location}</td>
                                                 <td>{s.speakerName}</td>
                                                 <td>{s.price}</td>
-                                                <td>{s.linkPDF}</td>
+                                                {/* ini harusnya logo */}
+                                                <td><a href={s.linkPDF}>PDF</a></td>
                                             </tr>   
                                         )
                                     )}
-                                    {/* {ts.schedules.map(s=>
-                                        <tr keys={s.id} onClick={this.handleDrop}>
-                                            <td>{s.date}</td>
-                                            <td>{s.location}</td>
-                                            <td>{s.speakerName}</td>
-                                            <td>{s.price}</td>
-                                            <td>{s.linkPDF}</td>
-                                        </tr>   
-                                    )} */}
-                                    </>
+                                    
+                                    </Fragment>
                             
                             </tbody>
                             )}
