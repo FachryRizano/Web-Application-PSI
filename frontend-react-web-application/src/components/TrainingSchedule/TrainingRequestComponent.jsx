@@ -6,14 +6,14 @@ class TrainingRequestComponent extends Component {
         super(props)
         this.state={
             user:authService.getCurrentUser()
+            
         }
     }
 
     componentDidMount(){
-        TrainingRequestService.getUserDetails()
-            .then(res=>{
-                console.log(res.data)
-            })
+        TrainingRequestService.getUserDetails(this.state.user.id).then(res=>{
+            console.log(res.data)
+        })
     }
 
     render() {
