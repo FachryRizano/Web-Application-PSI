@@ -13,12 +13,12 @@ class ListTrainingScheduleComponent extends Component {
 
     componentDidMount(){
         if(this.state.getCurrentUser == null){
-            return 
+            return
         }else{
         TrainingScheduleService.getAllTrainingSchedule().then(
             res=>{
                 this.setState({
-                    trainingSchedules : res.data      
+                    trainingSchedules : res.data
                 },()=>console.log(this.state.trainingSchedules));
             }
             )
@@ -32,7 +32,7 @@ class ListTrainingScheduleComponent extends Component {
                 <div>
                     <h2 className="text-center">Training Schedule List</h2>
                     <div className="table100">
-                        
+
                         <table>
 
                             <thead>
@@ -54,17 +54,19 @@ class ListTrainingScheduleComponent extends Component {
                                     <td className="column3">{ts.subjectName}</td>
                                     <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                                     <td className="column5">{ts.duration}</td>
-                                    {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown, 
+                                    {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown,
                                      yang penting udah masuk datanya dari backend*/}
-                                     
+
                                     {/* bisa jadi component sendiri */}
                                 </tr>
+
+
                             )}
                             </tbody>
 
                         </table>
 
-                    </div>      
+                    </div>
 
                 </div>
             );

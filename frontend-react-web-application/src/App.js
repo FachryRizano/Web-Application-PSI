@@ -44,10 +44,14 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     return (
       <div>
+
+    {/* Nav need fix UI */}
         {currentUser ? (
-          <nav className="navbar navbar-expand navbar-dark bg-dark">
-        
-            <div className="navbar-nav mr-auto">
+            <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-head">
+              <Link to={"/"} className="navbar-brand">
+                <img src={ logoWithText } alt="Logo"/>
+              </Link>
+              {/* ANEH
               <li className="nav-item">
                 <Link to={"/home"} className="nav-link">Home</Link>
               </li>
@@ -69,10 +73,7 @@ class App extends Component {
                   <Link to={"/user"} className="nav-link">User</Link>
                 </li>
               )}
-
-              <Link to={"/"} className="navbar-brand">
-                <img src={ logoWithText } alt="Logo"/>
-              </Link>
+              */}
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link to={"/profile"} className="nav-link">
@@ -85,26 +86,41 @@ class App extends Component {
                   </a>
                 </li>
               </div>
+            </nav>
 
-            </div>
-            
-          </nav>
-          ) : (
-            null
-            // <div className="navbar-nav ml-auto">
-            //   <li className="nav-item">
-            //     <Link to={"/login"} className="nav-link">
-            //       Login
-            //     </Link>
-            //   </li>
-            //   <li className="nav-item">
-            //     <Link to={"/register"} className="nav-link">
-            //       Sign Up
-            //     </Link>
-            //   </li>
-            // </div>
-          )}
-        
+            ) : (
+              null
+              // <div className="navbar-nav ml-auto">
+              //   <li className="nav-item">
+              //     <Link to={"/login"} className="nav-link">
+              //       Login
+              //     </Link>
+              //   </li>
+              //   <li className="nav-item">
+              //     <Link to={"/register"} className="nav-link">
+              //       Sign Up
+              //     </Link>
+              //   </li>
+              // </div>
+            )}
+
+            <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-dashboard">
+              <div className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Link to={"/profile"} className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="/training-schedules" className="nav-link">
+                    Training Schedules
+                  </a>
+                </li>
+              </div>
+            </nav>
+
+        {/* Nav need fix UI */}
+
         <div className="mainContainer">
           <div className="container mt-3">
             <Switch>

@@ -16,8 +16,6 @@ margin-top: 0 !important;
 
 
 
-
-
 .mainContainer {
   background-image: url("../image/login-background.jpeg");
   background-position: center;
@@ -35,7 +33,6 @@ margin-top: 0 !important;
   max-height: 50px;
 }
 
-
 .formSignUpFormHeader {
   text-align: center;
 }
@@ -52,6 +49,25 @@ margin-top: 0 !important;
   padding: 15px 0;
 }
 
+
+/* Nav header */
+
+.nav-praweda-head .navbar-nav {
+  margin: auto;
+  margin-right: 0 !important;
+}
+
+.nav-praweda-dashboard {
+  background-color: darkred !important;
+}
+.nav-praweda-dashboard a {
+  color: #fff !important;
+}
+
+.nav-praweda-dashboard .navbar-nav {
+  margin: auto;
+  margin-left: 0!important;
+}
 
 
 
