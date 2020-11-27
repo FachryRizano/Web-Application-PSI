@@ -3,6 +3,9 @@ import TrainingScheduleService from '../../services/Schedule/TrainingScheduleSer
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
+import iconExpand from '../../image/icon-expand.png';
+import iconPDFDownload from '../../image/icon-pdf-download.png';
+
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -60,7 +63,8 @@ class ListTrainingScheduleComponent extends Component {
                                     <th className="column2">Code</th>
                                     <th className="column3">Subject</th>
                                     <th className="column4">Participant</th>
-                                    <th className="column6">Duration</th>
+                                    <th className="column5">Duration</th>
+                                    <th className="column6">Action</th>
                                 </tr>
                             </thead>
                             {this.state.trainingSchedules.map(ts=>
@@ -72,23 +76,19 @@ class ListTrainingScheduleComponent extends Component {
                                         <td className="column3">{ts.subjectName}</td>
                                         <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                                         <td className="column5">{ts.duration}</td>
-                                        {/* ini gua gak tau cara bikin supaya dibawah tiap table ngedropdown,
-                                        yang penting udah masuk datanya dari backend*/}
-                                    </tr>
-                                    <tr>
-                                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={()=>this.handleToggleShown(ts.id)}>Schedule</button>
+                                        <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
                                     </tr>
 
                                     <Fragment>
                                     {this.state.detailsShown.includes(ts.id) && (
                                         ts.schedules.map(s=>
                                             <tr keys={s.id}>
-                                                <td>{s.date}</td>
-                                                <td>{s.location}</td>
-                                                <td>{s.speakerName}</td>
-                                                <td>{s.price}</td>
-                                                {/* ini harusnya logo */}
-                                                <td><a href={s.linkPDF}>PDF</a></td>
+                                                <td className="column1">{s.date}</td>
+                                                <td className="column2" colspan="2">{s.location}</td>
+                                                <td className="column4">{s.speakerName}</td>
+                                                <td className="column5">{s.price}</td>
+                                                <td className="column6"><a href={s.linkPDF}><img src={ iconPDFDownload } alt="PDF Download"/></a></td>
+
                                             </tr>
                                         )
                                     )}
