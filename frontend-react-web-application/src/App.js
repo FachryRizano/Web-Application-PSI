@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React, { Component, Fragment} from 'react';
 import {Route, Link, Switch}from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -47,47 +47,79 @@ class App extends Component {
 
     {/* Nav need fix UI */}
         {currentUser ? (
-            <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-head">
-              <Link to={"/"} className="navbar-brand">
-                <img src={ logoWithText } alt="Logo"/>
-              </Link>
-              {/* ANEH
-              <li className="nav-item">
-                <Link to={"/home"} className="nav-link">Home</Link>
-              </li>
+          <Fragment>
+            <Fragment>
+              <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-head">
+                <Link to={"/"} className="navbar-brand">
+                  <img src={ logoWithText } alt="Logo"/>
+                </Link>
+                {/* ANEH
+                <li className="nav-item">
+                  <Link to={"/home"} className="nav-link">Home</Link>
+                </li>
 
-              {showModeratorBoard && (
-                <li className="nav-item">
-                  <Link to={"/mod"} className="nav-link">Moderator Board</Link>
-                </li>
-              )}
+                {showModeratorBoard && (
+                  <li className="nav-item">
+                    <Link to={"/mod"} className="nav-link">Moderator Board</Link>
+                  </li>
+                )}
 
-              {showAdminBoard && (
-                <li className="nav-item">
-                  <Link to={"/admin"} className="nav-link">Admin Board</Link>
-                </li>
-              )}
+                {showAdminBoard && (
+                  <li className="nav-item">
+                    <Link to={"/admin"} className="nav-link">Admin Board</Link>
+                  </li>
+                )}
 
-              {currentUser && (
-                <li className="nav-item">
-                  <Link to={"/user"} className="nav-link">User</Link>
-                </li>
-              )}
-              */}
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
-                    {currentUser.email}
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/login" className="nav-link" onClick={this.logOut}>
-                    LogOut
-                  </a>
-                </li>
-              </div>
-            </nav>
+                {currentUser && (
+                  <li className="nav-item">
+                    <Link to={"/user"} className="nav-link">User</Link>
+                  </li>
+                )}
+                */}
+                <div className="navbar-nav ml-auto">
 
+                  <li className="nav-item">
+                    <Link to={"/profile"} className="nav-link">
+                      {currentUser.email}
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <a href="/login" className="nav-link" onClick={this.logOut}>
+                      LogOut
+                    </a>
+                  </li>
+                </div>
+              </nav>
+            </Fragment>
+
+            <Fragment>
+              <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-dashboard">
+                <div className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <Link to={"/profile"} className="nav-link">
+                      Home
+                    </Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <a href="/training-schedules" className="nav-link">
+                      Training Schedules
+                    </a>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link to={"/training-request"} className="nav-link">
+                      Training Request
+                    </Link>
+                  </li>
+                </div>
+
+              </nav>
+
+            </Fragment>
+          </Fragment>
+            
             ) : (
               null
               // <div className="navbar-nav ml-auto">
@@ -104,20 +136,7 @@ class App extends Component {
               // </div>
             )}
 
-            <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-dashboard">
-              <div className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <Link to={"/profile"} className="nav-link">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a href="/training-schedules" className="nav-link">
-                    Training Schedules
-                  </a>
-                </li>
-              </div>
-            </nav>
+            
 
         {/* Nav need fix UI */}
 
