@@ -92,8 +92,6 @@ class ListTrainingScheduleComponent extends Component {
                                             <td className="column5">{ts.duration}</td>
                                             <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
                                         </tr>
-
-                                        <Fragment>
                                         {this.state.detailsShown.includes(ts.id) && (
                                             ts.schedules.map(s=>
                                                 <tr keys={s.id}>
@@ -106,8 +104,7 @@ class ListTrainingScheduleComponent extends Component {
                                                 </tr>
                                             )
                                         )}
-
-                                        </Fragment>
+                                        
 
                                 </tbody>
                                 )}

@@ -1,9 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
+import LeftNavbarMenu from '../LeftNavbarMenu';
+import Save from '../../image/Save.ico';
 class TrainingRequestComponent extends Component {
     constructor(props){
         super(props)
@@ -33,44 +32,37 @@ class TrainingRequestComponent extends Component {
     render() {
         const userDetails = this.state.userDetails
         return (
-            <>
+            <div className="row">
                 {/*menu disebelah kiri */}
-                <div className="container col-md-3 text">
-                    
-                    <div className="row d-block border">
-                        <p>New Request</p>
-                        <p>By Employee</p>
-                        <p>By Topics</p>
-                        <p>By Company</p>
-                        <p>By Location</p>
-                        <p>By Status</p>
-                    </div>
-
-                    <div className="row d-block border">
-                        <p>E-Certificate</p>
-                        <p>My Certificate</p>
-                        <p>By Topic</p>
-                    </div>
-                    
-                    <div className="row d-block border">
-                        <p>Training Evaluation</p>
-                        <p>Open</p>
-                        <p>Close</p>
-                    </div>
+                <div className="container col-md-2 text border-right ml-auto">
+                    <LeftNavbarMenu data={['My Outstanding(0)']}/>
+                    <LeftNavbarMenu data={['New Request','By Employee','By Topics','By Company','By Location']}/>
+                    <LeftNavbarMenu data={['E-Certificate','My Certificate','By Topic']}/>
+                    <LeftNavbarMenu data={['Training Evaluation','Open','Close']}/>
                 </div>
 
+                {/* sebelah kanan */}
                 <div className="container pt-3 col-md-9">
                     {/*button diatas user profile */}
                     <div className="container bg-danger">
-                            <button className="bg-light">Save</button>
-                            <button className="bg-light">Submit</button>
-                            <button className="bg-light">Cancel Request</button>
-                            <button className="bg-light">Renotify to Karyawan/PIC HC</button>
-                            <a href="/">Go to bottom</a>
+                        <span className="container">
+                            <button>Save</button>
+                        </span>
+                        <span className="container ">
+                            <button>Submit</button>
+                        </span>
+
+                        <span className="container ">
+                            <button>Cancel Request</button>
+                        </span>
+
+                        <span className="container ">
+                            <button>Renotify to Karyawan/PIC HC</button>
+                        </span>
                     </div>
                     
                     {/* user profile */}
-                    <div className="container pt-4">
+                    <div className="container col pt-4">
                         
                         
                         <div className="container bg-warning text-center pt-3">
@@ -125,7 +117,7 @@ class TrainingRequestComponent extends Component {
 
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }
