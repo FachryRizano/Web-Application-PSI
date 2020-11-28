@@ -44,11 +44,9 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     return (
       <div>
-
-    {/* Nav need fix UI */}
         {currentUser ? (
-          <Fragment>
-            <Fragment>
+        <Fragment>
+            
               <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-head">
                 <Link to={"/"} className="navbar-brand">
                   <img src={ logoWithText } alt="Logo"/>
@@ -91,9 +89,9 @@ class App extends Component {
                   </li>
                 </div>
               </nav>
-            </Fragment>
+            
 
-            <Fragment>
+            
               <nav className="navbar navbar-expand navbar-dark bg-dark nav-praweda-dashboard">
                 <div className="navbar-nav ml-auto">
                   <li className="nav-item">
@@ -117,7 +115,7 @@ class App extends Component {
 
               </nav>
 
-            </Fragment>
+            
           </Fragment>
             
             ) : (
@@ -140,20 +138,19 @@ class App extends Component {
 
         {/* Nav need fix UI */}
 
-        <div className="mainContainer">
-          <div className="container mt-3">
-            <Switch>
-              <Route exact path={["/", "/home"]} component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/profile" component={Profile} />
-              <Route path="/user" component={BoardUser} />
-              <Route path="/mod" component={BoardModerator} />
-              <Route path="/admin" component={BoardAdmin} />
-              <Route exact path="/training-schedules" render={props=><ListTrainingSchedule currentUser={this.state.currentUser} {...props}/>}/>
-              <Route exact path="/training-request" component={TrainingRequest}/>
-            </Switch>
-          </div>
-        </div>
+        
+          
+        <Switch>
+          <Route exact path={["/", "/home"]} component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/profile" component={Profile} />
+          <Route path="/user" component={BoardUser} />
+          <Route path="/mod" component={BoardModerator} />
+          <Route path="/admin" component={BoardAdmin} />
+          <Route exact path="/training-schedules" render={props=><ListTrainingSchedule currentUser={this.state.currentUser} {...props}/>}/>
+          <Route exact path="/training-request" component={TrainingRequest}/>
+        </Switch>
+    
       </div>
     );
   }
