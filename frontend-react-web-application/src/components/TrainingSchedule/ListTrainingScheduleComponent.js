@@ -99,6 +99,7 @@ class ListTrainingScheduleComponent extends Component {
                                                     <td className="column2" colspan="2">{s.location}</td>
                                                     <td className="column4">{s.speakerName}</td>
                                                     <td className="column5">{s.price}</td>
+                                                    {/* ralat, ini bukan linkPDF tapi untuk training request */}
                                                     <td className="column6"><a href={s.linkPDF}><img src={ iconPDFDownload } alt="PDF Download"/></a></td>
 
                                                 </tr>
