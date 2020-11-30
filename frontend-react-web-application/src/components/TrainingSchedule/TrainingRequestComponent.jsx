@@ -9,7 +9,8 @@ class TrainingRequestComponent extends Component {
         super(props)
         this.state={
             user:authService.getCurrentUser(),
-            userDetails:[]
+            userDetails:[],
+            scheduleDetails:{}
         }
     }
 
@@ -36,11 +37,10 @@ class TrainingRequestComponent extends Component {
             <div className="row">
                 {/*menu disebelah kiri */}
                 <div className="container col-md-2 text border-right ml-auto">
-                    {/* <LeftNavbarMenu data={['My Outstanding(0)']}/> */}
-                    <Button icon="scroll" text="New Request"/>
-                    <LeftNavbarMenu icon="scroll" text="New Request" data={['By Employee','By Topics','By Company','By Location']}/>
-                    <LeftNavbarMenu icon="file-certificate" text="E-Certificate" data={['My Certificate','By Topic']}/>
-                    <LeftNavbarMenu icon="wp-forms" text="Training Evaluation" data={['Open','Close']}/>
+                    <LeftNavbarMenu data={["My Outstanding"]}/>
+                    <LeftNavbarMenu icon="save" text="New Request" data={['By Employee','By Topics','By Company','By Location']}/>
+                    <LeftNavbarMenu icon="arrow-right" text="E-Certificate" data={['My Certificate','By Topic']}/>
+                    <LeftNavbarMenu icon="bell" text="Training Evaluation" data={['Open','Close']}/>
                 </div>
 
                 {/* sebelah kanan */}
@@ -48,7 +48,7 @@ class TrainingRequestComponent extends Component {
                     {/*button diatas user profile */}
                     <div className="container bg-danger pt-2 pb-2">
                         <Button icon="save" text="Save"/>
-                        <Button icon="arrow-light" text="Submit"/>
+                        <Button icon="arrow-right" text="Submit"/>
                         <Button icon="trash" text="Cancel Request"/>
                         <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
                     </div>
