@@ -51,57 +51,70 @@ class ListTrainingScheduleComponent extends Component {
             return <Redirect to="/login"/>
         }else{
             return (
-                <>
-                    <h2 className="text-center">Training Schedule List</h2>
-                    <div className="table100">
-
-                        <table>
-
-                            <thead>
-                                <tr className="table100-head">
-                                    <th className="column1">No</th>
-                                    <th className="column2">Code</th>
-                                    <th className="column3">Subject</th>
-                                    <th className="column4">Participant</th>
-                                    <th className="column5">Duration</th>
-                                    <th className="column6">Action</th>
-                                </tr>
-                            </thead>
-                            {this.state.trainingSchedules.map(ts=>
-                            <tbody keys={ts.id}>
-
-                                    <tr>
-                                        <td className="column1">{ts.id}</td>
-                                        <td className="column2">{ts.code}</td>
-                                        <td className="column3">{ts.subjectName}</td>
-                                        <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
-                                        <td className="column5">{ts.duration}</td>
-                                        <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
-                                    </tr>
-
-                                    <Fragment>
-                                    {this.state.detailsShown.includes(ts.id) && (
-                                        ts.schedules.map(s=>
-                                            <tr keys={s.id}>
-                                                <td className="column1">{s.date}</td>
-                                                <td className="column2" colspan="2">{s.location}</td>
-                                                <td className="column4">{s.speakerName}</td>
-                                                <td className="column5">{s.price}</td>
-                                                <td className="column6"><a href={s.linkPDF}><img src={ iconPDFDownload } alt="PDF Download"/></a></td>
-
-                                            </tr>
-                                        )
-                                    )}
-
-                                    </Fragment>
-
-                            </tbody>
-                            )}
-                        </table>
-
+                <div className="container border pt-3">
+                    <div className="d-inline">
+                        <label>Periode Training:</label>
+                    </div>
+                    <div classname="d-inline">
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown button
+                            </button>
+                        </div>
                     </div>
 
-                </>
+                    <div className="container">
+                        
+                        
+                        <div className="table100">
+
+                            <table>
+
+                                <thead>
+                                    <tr className="table100-head">
+                                        <th className="column1">No</th>
+                                        <th className="column2">Code</th>
+                                        <th className="column3">Subject</th>
+                                        <th className="column4">Participant</th>
+                                        <th className="column5">Duration</th>
+                                        <th className="column6">Action</th>
+                                    </tr>
+                                </thead>
+                                {this.state.trainingSchedules.map(ts=>
+                                <tbody keys={ts.id}>
+
+                                        <tr>
+                                            <td className="column1">{ts.id}</td>
+                                            <td className="column2">{ts.code}</td>
+                                            <td className="column3">{ts.subjectName}</td>
+                                            <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
+                                            <td className="column5">{ts.duration}</td>
+                                            <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
+                                        </tr>
+                                        {this.state.detailsShown.includes(ts.id) && (
+                                            ts.schedules.map(s=>
+                                                <tr keys={s.id}>
+                                                    <td className="column1">{s.date}</td>
+                                                    <td className="column2" colspan="2">{s.location}</td>
+                                                    <td className="column4">{s.speakerName}</td>
+                                                    <td className="column5">{s.price}</td>
+                                                    {/* ralat, ini bukan linkPDF tapi untuk training request */}
+                                                    <td className="column6"><a href={s.linkPDF}><img src={ iconPDFDownload } alt="PDF Download"/></a></td>
+
+                                                </tr>
+                                            )
+                                        )}
+                                        
+
+                                </tbody>
+                                )}
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
             );
         }
 
