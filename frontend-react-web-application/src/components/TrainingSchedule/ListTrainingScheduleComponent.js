@@ -4,7 +4,6 @@ import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
 import iconExpand from '../../image/icon-expand.png';
-import iconPDFDownload from '../../image/icon-pdf-download.png';
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
@@ -24,10 +23,14 @@ class ListTrainingScheduleComponent extends Component {
             res=>{
                 this.setState({
                     trainingSchedules : res.data
-                },()=>console.log(this.state.trainingSchedules));
+                });
             }
             )
         }
+    }
+
+    handleRequestTraining = (s,ts)=>{
+        console.log(ts.subjectName,s);
     }
 
     handleToggleShown= id=>{

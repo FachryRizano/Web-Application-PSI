@@ -1,12 +1,15 @@
-import React from "react";
+import React,{Fragment}from "react";
 import Button from "../components/Button";
 
 export default function LeftNavbarMenu(props){
     return(
-        <div className="row d-block border-top p-4">
-            {props.data.map(p=>
-                <button className="btn">{p}</button>
-            )}
-        </div>
+        <Fragment>
+            <div className="row border-top p-4">
+                <Button icon={props.icon} text={props.text}/>
+                {props.data.map(p=>
+                    <Button text={p}/> 
+                )}
+            </div>
+        </Fragment>
     );
 }
