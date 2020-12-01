@@ -12,11 +12,26 @@ a:hover {
 margin-top: 0 !important;
 }
 
+/* Nav header */
+.nav-praweda-head .navbar-nav {
+  margin: auto;
+  margin-right: 0 !important;
+}
 
+.nav-praweda-dashboard {
+  background-color: darkred !important;
+}
+.nav-praweda-dashboard a {
+  color: #fff !important;
+}
 
+.nav-praweda-dashboard .navbar-nav {
+  margin: auto;
+  margin-left: 0!important;
+}
 
-
-.mainContainer {
+/* SignUp form */
+.loginSignUpFormContainer {
   background-image: url("../image/login-background.jpeg");
   background-position: center;
   background-repeat: no-repeat;
@@ -50,27 +65,18 @@ margin-top: 0 !important;
 }
 
 
-/* Nav header */
-
-.nav-praweda-head .navbar-nav {
-  margin: auto;
-  margin-right: 0 !important;
+/* dropdownPeriodeTrainingSchedule */
+.dropdownPeriodeTrainingSchedule {
+  padding: 1em 0;
 }
-
-.nav-praweda-dashboard {
-  background-color: darkred !important;
+.dropdownPeriodeTrainingSchedule label {
+  font-size: 20px;
 }
-.nav-praweda-dashboard a {
-  color: #fff !important;
+#periodeTrainingSchedule {
+  border: 1px black solid;
+  width: 90px;
+  font-size: 20px;
 }
-
-.nav-praweda-dashboard .navbar-nav {
-  margin: auto;
-  margin-left: 0!important;
-}
-
-
-
 
 /* table100 */
 .table100 table {
@@ -139,3 +145,13 @@ background: #36304a;
   line-height: 1.2;
   font-weight: unset;
 }
+
+
+
+
+
+/*
+.popUpTrainingSchedule {
+  position: fixed;
+}
+*/

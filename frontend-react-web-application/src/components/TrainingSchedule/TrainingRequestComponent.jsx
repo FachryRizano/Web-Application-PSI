@@ -4,6 +4,11 @@ import TrainingRequestService from '../../services/TrainingRequest/TrainingReque
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
+
+import ListTrainingSchedule from "./ListTrainingScheduleComponent";
+import Popup from 'reactjs-popup';
+
+
 class TrainingRequestComponent extends Component {
     constructor(props){
         super(props)
@@ -100,7 +105,14 @@ class TrainingRequestComponent extends Component {
                                             {/* ini harusnya periode dropdown year */}
                                             <label>Periode:<input type="text" name="periode" /></label>
                                             {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subjectt:<input type="text" name="" /></label>
+                                            <label>Subjectt:
+                                              <input type="text" name="" />
+                                              <Popup trigger={<button> Trigger</button>} position="fixed">
+                                                <div className="popUpTrainingSchedule">
+                                                  <ListTrainingSchedule/>
+                                                </div>
+                                              </Popup>
+                                            </label>
                                             <label>Training Code:</label>
                                             <label>Group:</label>
                                             <label>Duration:</label>

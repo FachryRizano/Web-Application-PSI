@@ -12,9 +12,11 @@
     "popper.js": "^1.16.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-iframe": "^1.8.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-validation": "^3.0.7",
+    "reactjs-popup": "^2.0.4",
     "validator": "^12.2.0"
   },
   "scripts": {
