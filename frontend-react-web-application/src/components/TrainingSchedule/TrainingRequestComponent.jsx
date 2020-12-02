@@ -6,7 +6,7 @@ import Button from '../Button';
 import logo from '../../image/logo.jpg';
 
 import ListTrainingSchedule from "./ListTrainingScheduleComponent";
-import Popup from 'reactjs-popup';
+
 
 
 class TrainingRequestComponent extends Component {
@@ -15,15 +15,17 @@ class TrainingRequestComponent extends Component {
         this.state={
             user:authService.getCurrentUser(),
             userDetails:[],
-            scheduleDetails:{}
+            // scheduleDetails:this.props.location.state.scheduleDetails,
+            // subjectName:this.props.location.state.subjectName
         }
     }
 
     componentDidMount(){
         TrainingRequestService.getUserDetails(this.state.user.id).then(res=>{
             this.setState({userDetails:res.data})
-
         })
+        console.log(this.state.subjectName)
+        console.log(this.state.scheduleDetails)
     }
 
     required = value => {
@@ -105,13 +107,14 @@ class TrainingRequestComponent extends Component {
                                             {/* ini harusnya periode dropdown year */}
                                             <label>Periode:<input type="text" name="periode" /></label>
                                             {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subjectt:
-                                              <input type="text" name="" />
-                                              <Popup trigger={<button> Trigger</button>} position="fixed">
+                                            <label>Subject:
+                                              <input type="text" name="" value={this.props.scheduleDetails}/>
+
+                                              {/* <Popup trigger={<button> Trigger</button>} position="fixed">
                                                 <div className="popUpTrainingSchedule">
                                                   <ListTrainingSchedule/>
                                                 </div>
-                                              </Popup>
+                                              </Popup> */}
                                             </label>
                                             <label>Training Code:</label>
                                             <label>Group:</label>
