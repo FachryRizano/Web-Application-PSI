@@ -1,9 +1,10 @@
 import React, { Component , Fragment} from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
-import {Redirect} from "react-router-dom";
+import {Redirect,Link} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
 import iconExpand from '../../image/icon-expand.png';
+import TrainingRequestComponent from './TrainingRequestComponent';
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
@@ -11,7 +12,9 @@ class ListTrainingScheduleComponent extends Component {
         this.state={
             trainingSchedules:[],
             getCurrentUser:AuthService.getCurrentUser(),
-            detailsShown:[]
+            detailsShown:[],
+            // selectedTraining:{},
+            // selectedName:null
         }
     }
 
@@ -29,8 +32,14 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (s,ts)=>{
-        console.log(ts.subjectName,s);
+    handleRequestTraining = (subjectName,scheduleDetails)=>{
+      this.props.history.push({
+        pathname:'/training-request',
+        state:{
+          subjectName,
+          scheduleDetails
+        }
+      })
     }
 
     handleToggleShown= id=>{
@@ -91,11 +100,11 @@ class ListTrainingScheduleComponent extends Component {
                       ts.schedules.map(s=>
                         <tr keys={s.id}>
                           <td className="column1">{s.date}</td>
-                          <td className="column2" colspan="2">{s.location}</td>
+                          <td className="column2" colSpan="2">{s.location}</td>
                           <td className="column4">{s.speakerName}</td>
                           <td className="column5">{s.price}</td>
                           {/* ralat, ini bukan linkPDF tapi untuk training request */}
-                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(s,ts)}><i className="fa fa-arrow-down"></i></button></td>
+                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts.subjectName,s)}><i className="fa fa-arrow-down"></i></button></td>
                         </tr>
                       )
                       )}
