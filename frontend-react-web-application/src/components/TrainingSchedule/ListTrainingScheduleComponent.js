@@ -32,11 +32,11 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (subjectName,scheduleDetails)=>{
+    handleRequestTraining = (trainingSchedule,scheduleDetails)=>{
       this.props.history.push({
         pathname:'/training-request',
         state:{
-          subjectName,
+          trainingSchedule,
           scheduleDetails
         }
       })
@@ -104,7 +104,7 @@ class ListTrainingScheduleComponent extends Component {
                           <td className="column4">{s.speakerName}</td>
                           <td className="column5">{s.price}</td>
                           {/* ralat, ini bukan linkPDF tapi untuk training request */}
-                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts.subjectName,s)}><i className="fa fa-arrow-down"></i></button></td>
+                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts,s)}><i className="fa fa-arrow-down"></i></button></td>
                         </tr>
                       )
                       )}

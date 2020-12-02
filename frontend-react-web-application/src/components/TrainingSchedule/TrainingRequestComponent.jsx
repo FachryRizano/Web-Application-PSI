@@ -17,6 +17,8 @@ class TrainingRequestComponent extends Component {
             userDetails:[],
             // scheduleDetails:this.props.location.state.scheduleDetails,
             // subjectName:this.props.location.state.subjectName
+            trainingSchedule:{},
+            scheduleDetails:{}
         }
     }
 
@@ -24,8 +26,12 @@ class TrainingRequestComponent extends Component {
         TrainingRequestService.getUserDetails(this.state.user.id).then(res=>{
             this.setState({userDetails:res.data})
         })
-        console.log(this.state.subjectName)
-        console.log(this.state.scheduleDetails)
+        if(this.props.location.state !== undefined){
+            this.setState({
+                trainingSchedule:this.props.location.state.trainingSchedule,
+                scheduleDetails:this.props.location.state.scheduleDetails
+            })
+        }
     }
 
     required = value => {
@@ -39,7 +45,7 @@ class TrainingRequestComponent extends Component {
       };
 
     render() {
-        const userDetails = this.state.userDetails
+        const {userDetails,trainingSchedule,scheduleDetails} = this.state
         return (
             <div className="row">
                 {/*menu disebelah kiri */}
@@ -86,7 +92,7 @@ class TrainingRequestComponent extends Component {
                                         <label>Posisi:{userDetails.posisi}</label>
                                         <label>Keluarga Jabatan:{userDetails.keluargaJabatan}</label>
                                         <label>Level:{userDetails.level}</label>
-                                        <label>No.HP:{userDetails.noHp}</label>
+                                        <label>No.HP:<input type="number" name="noHP" value={userDetails.noHp}/></label>
                                         <label>Ukuran Kaos:{userDetails.ukuran}</label>
                                     </div>
 
@@ -101,32 +107,26 @@ class TrainingRequestComponent extends Component {
 
                             {/* pilihan training schedul yang ingin diikuti */}
                             <div className="container bg-light pt-4">
+
                                 <form>
                                     <div className="container border row text-left">
                                         <div className="col-md-6">
                                             {/* ini harusnya periode dropdown year */}
                                             <label>Periode:<input type="text" name="periode" /></label>
-                                            {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subject:
-                                              <input type="text" name="" value={this.props.scheduleDetails}/>
-
-                                              {/* <Popup trigger={<button> Trigger</button>} position="fixed">
-                                                <div className="popUpTrainingSchedule">
-                                                  <ListTrainingSchedule/>
-                                                </div>
-                                              </Popup> */}
-                                            </label>
-                                            <label>Training Code:</label>
+                                            <label>Subject:<input type="text" name="" value={trainingSchedule.subjectName}/></label>
+                                            <label>Training Code:{trainingSchedule.code}</label>
                                             <label>Group:</label>
-                                            <label>Duration:</label>
-                                            <label>Investment(IDR):</label>
-                                            <label>Date:</label>
-                                            <label>Area Training:</label>
-                                            <label>Trainer:</label>
+                                            <label>Duration:{scheduleDetails.duration}</label>
+                                            <label>Investment(IDR):{scheduleDetails.price}</label>
+                                            <label>Date:{scheduleDetails.date}</label>
+                                            <label>Area Training:{scheduleDetails.location}</label>
+                                            <label>Trainer:{scheduleDetails.speaker}</label>
+                                            {/* vendor sokap */}
                                             <label>Vendor:</label>
                                         </div>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
