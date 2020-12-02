@@ -4,6 +4,7 @@ import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
 import iconExpand from '../../image/icon-expand.png';
+import iconPDFDownload from '../../image/icon-pdf-download.png';
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
