@@ -77,7 +77,7 @@ class TrainingRequestComponent extends Component {
                         {/* user profile */}
                         <div className="container col pt-4">
 
-                            <div className="container bg-warning text-center pt-3">
+                            <div className="container bg-light text-center pt-3">
                                 <div className="row">
                                     <div className="col-md-6 text-left">
                                         <label >Name:<input type="text" name="name" value={userDetails.nama}/></label>

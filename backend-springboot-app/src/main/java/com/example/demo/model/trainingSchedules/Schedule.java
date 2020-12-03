@@ -14,18 +14,16 @@ public class Schedule {
     private Date date;
     private String location;
     private String speakerName;
-    private String linkPDF;
     private int price;
 
     public Schedule(){
 
     }
 
-    public Schedule(Date date, String location, String speakerName, String linkPDF, int price) {
+    public Schedule(Date date, String location, String speakerName, int price) {
         this.date = date;
         this.location = location;
         this.speakerName = speakerName;
-        this.linkPDF = linkPDF;
         this.price = price;
     }
 
@@ -61,11 +59,4 @@ public class Schedule {
         this.speakerName = speakerName;
     }
 
-    public String getLinkPDF() {
-        return linkPDF;
-    }
-
-    public void setLinkPDF(String linkPDF) {
-        this.linkPDF = linkPDF;
-    }
 }
