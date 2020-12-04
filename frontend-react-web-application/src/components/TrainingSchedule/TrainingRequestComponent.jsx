@@ -5,7 +5,6 @@ import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
 
-import ListTrainingSchedule from "./ListTrainingScheduleComponent";
 
 
 
@@ -18,7 +17,8 @@ class TrainingRequestComponent extends Component {
             // scheduleDetails:this.props.location.state.scheduleDetails,
             // subjectName:this.props.location.state.subjectName
             trainingSchedule:{},
-            scheduleDetails:{}
+            scheduleDetails:{},
+            ukuranKaos:""
         }
     }
 
@@ -43,7 +43,12 @@ class TrainingRequestComponent extends Component {
           );
         }
       };
-
+    
+    handleChange =(e)=>{
+        this.setState({
+            ukuranKaos:e.target.value
+        })
+    }
     render() {
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
         return (
@@ -92,8 +97,24 @@ class TrainingRequestComponent extends Component {
                                         <label>Posisi:{userDetails.posisi}</label>
                                         <label>Keluarga Jabatan:{userDetails.keluargaJabatan}</label>
                                         <label>Level:{userDetails.level}</label>
-                                        <label>No.HP:<input type="number" name="noHP" value={userDetails.noHp}/></label>
-                                        <label>Ukuran Kaos:{userDetails.ukuran}</label>
+                                        {/* ini inputnya disini */}
+                                        <label>No.HP:<input type="number" name="noHP"/></label>
+                                        
+                                        
+                                        
+                                        <label for="ukuranKaos">Ukuran Kaos: 
+                                            <select dafaultValue={this.state.ukuranKaos} name="periodeTrainingSchedule" id="periodeTrainingSchedule" onChange={this.handleChange}>
+                                                <option value=""></option>
+                                                <option value="S">S</option>
+                                                <option value="M">M</option>
+                                                <option value="L">L</option>
+                                                <option value="XL">XL</option>
+                                                <option value="XXL">XXL</option>
+                                                <option value="XXXL">XXXL</option>
+                                            </select>
+                                        </label>
+                                        
+
                                     </div>
 
                                     <div className="col-md-6 text-left">
@@ -112,7 +133,14 @@ class TrainingRequestComponent extends Component {
                                     <div className="container border row text-left">
                                         <div className="col-md-6">
                                             {/* ini harusnya periode dropdown year */}
-                                            <label>Periode:<input type="text" name="periode" /></label>
+                                            <label for="ukuranKaos">Periode: 
+                                                <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
+                                                    <option value=""></option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2021">2021</option>
+                                                </select>
+                                            </label>
                                             <label>Subject:<input type="text" name="" value={trainingSchedule.subjectName}/></label>
                                             <label>Training Code:{trainingSchedule.code}</label>
                                             <label>Group:</label>

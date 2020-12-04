@@ -66,12 +66,14 @@ class ListTrainingScheduleComponent extends Component {
               <div className="container">
 
                 <div className="dropdownPeriodeTrainingSchedule">
-                  <label for="periodeTrainingSchedule">Pilih Periode:</label>
-                  <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                  </select>
+                  <label for="periodeTrainingSchedule">Pilih Periode:
+                    <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                    </select>
+                  </label>
+                  
                 </div>
 
                 <div className="table100">
