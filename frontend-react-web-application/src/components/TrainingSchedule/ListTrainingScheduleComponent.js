@@ -1,10 +1,9 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component} from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
-import {Redirect,Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
 import iconExpand from '../../image/icon-expand.png';
-import TrainingRequestComponent from './TrainingRequestComponent';
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
@@ -66,7 +65,7 @@ class ListTrainingScheduleComponent extends Component {
               <div className="container">
 
                 <div className="dropdownPeriodeTrainingSchedule">
-                  <label for="periodeTrainingSchedule">Pilih Periode:
+                  <label htmlFor="periodeTrainingSchedule">Pilih Periode:
                     <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                       <option value="2019">2019</option>
                       <option value="2020">2020</option>

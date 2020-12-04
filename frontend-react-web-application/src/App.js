@@ -22,8 +22,8 @@ class App extends Component {
     super(props);
     this.logOut = this.logOut.bind(this);
     this.state = {
-      showModeratorBoard: false,
-      showAdminBoard: false,
+      // showModeratorBoard: false,
+      // showAdminBoard: false,
       currentUser: undefined,
     };
   }
@@ -41,7 +41,7 @@ class App extends Component {
     AuthService.logout(this.state.currentUser.email);
   }
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser} = this.state;
     return (
       <div>
         {currentUser ? (
