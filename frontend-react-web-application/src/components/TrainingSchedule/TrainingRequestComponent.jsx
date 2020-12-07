@@ -161,8 +161,7 @@ class TrainingRequestComponent extends Component {
                                             <label>Date:{scheduleDetails.date}</label>
                                             <label>Area Training:{scheduleDetails.location}</label>
                                             <label>Trainer:{scheduleDetails.speakerName}</label>
-                                            {/* vendor sokap */}
-                                            <label>Vendor:</label>
+                                            <label>Vendor:{scheduleDetails.vendor}</label>
                                         </div>
                                     </div>
                                 </form>

@@ -16,6 +16,7 @@
 //    private Long id;
 ////    noHP dan ukuranKaos di ovveride
 //    //untuk user details ambil primary key atau bikin baru ?
+//OnetoOne Relation
 //    private UserDetails userDetails;
 //
 //    // INI DARI TRAINING SCHEDULE
