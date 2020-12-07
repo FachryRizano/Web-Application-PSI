@@ -31,5 +31,6 @@
 //    private Date date;
 //    private String location;
 //    private String speakerName;
+//    private String vendor;
 //
 //}
