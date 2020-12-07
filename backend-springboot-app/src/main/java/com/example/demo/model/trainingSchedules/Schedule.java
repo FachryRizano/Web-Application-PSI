@@ -17,16 +17,17 @@ public class Schedule {
     private String location;
     private String speakerName;
     private int price;
-
+    private String vendor;
     public Schedule(){
 
     }
 
-    public Schedule(Date date, String location, String speakerName, int price) {
+    public Schedule(Date date, String location, String speakerName, int price, String vendor) {
         this.date = date;
         this.location = location;
         this.speakerName = speakerName;
         this.price = price;
+        this.vendor = vendor;
     }
 
     public int getPrice() {
@@ -61,4 +62,11 @@ public class Schedule {
         this.speakerName = speakerName;
     }
 
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
+    }
 }
