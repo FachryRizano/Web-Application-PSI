@@ -28,7 +28,8 @@ class TrainingRequestComponent extends Component {
         if(this.props.location.state !== undefined){
             this.setState({
                 trainingSchedule:this.props.location.state.trainingSchedule,
-                scheduleDetails:this.props.location.state.scheduleDetails
+                scheduleDetails:this.props.location.state.scheduleDetails,
+                grup:this.state.scheduleDetails.code.substring(0,2)
             })
         }
     }
@@ -57,9 +58,6 @@ class TrainingRequestComponent extends Component {
     }
     render() {
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
-        if(scheduleDetails !== undefined){
-            var grup = scheduleDetails.code.substring(0,2)
-        }
         return (
             <div className="row">
                 {/*menu disebelah kiri */}
@@ -158,7 +156,7 @@ class TrainingRequestComponent extends Component {
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             <label>Training Code:{scheduleDetails.code}</label>
-                                            <label>Group:{grup}</label>
+                                            <label>Group:{this.state.grup}</label>
                                             <label>Duration:{scheduleDetails.duration}</label>
                                             <label>Investment(IDR):{scheduleDetails.price}</label>
                                             <label>Date:{scheduleDetails.date}</label>
