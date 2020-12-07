@@ -57,6 +57,9 @@ class TrainingRequestComponent extends Component {
     }
     render() {
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
+        if(scheduleDetails !== undefined){
+            var grup = scheduleDetails.code.substring(0,2)
+        }
         return (
             <div className="row">
                 {/*menu disebelah kiri */}
@@ -154,8 +157,8 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <label>Training Code:{trainingSchedule.code}</label>
-                                            <label>Group:</label>
+                                            <label>Training Code:{scheduleDetails.code}</label>
+                                            <label>Group:{grup}</label>
                                             <label>Duration:{scheduleDetails.duration}</label>
                                             <label>Investment(IDR):{scheduleDetails.price}</label>
                                             <label>Date:{scheduleDetails.date}</label>
