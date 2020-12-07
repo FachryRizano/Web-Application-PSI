@@ -95,7 +95,7 @@ class ListTrainingScheduleComponent extends Component {
                         <td className="column3">{ts.subjectName}</td>
                         <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                         <td className="column5">{ts.duration}</td>
-                        <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
+                        <td className="column6"><button className="border-0"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></button></td>
                       </tr>
                       {this.state.detailsShown.includes(ts.id) && (
                       ts.schedules.map(s=>
