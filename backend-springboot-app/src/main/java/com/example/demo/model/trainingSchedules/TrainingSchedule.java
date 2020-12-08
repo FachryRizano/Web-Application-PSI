@@ -2,7 +2,10 @@ package com.example.demo.model.trainingSchedules;
 
 import com.example.demo.model.trainingSchedules.Participant;
 import com.example.demo.model.trainingSchedules.Schedule;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -91,7 +94,7 @@ public class TrainingSchedule {
         return kelompok;
     }
 
-    public void setGroup(String kelompok) {
+    public void setKelompok(String kelompok) {
         this.kelompok = kelompok;
     }
 

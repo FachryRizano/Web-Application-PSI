@@ -29,8 +29,7 @@ class TrainingRequestComponent extends Component {
             this.setState({
                 trainingSchedule:this.props.location.state.trainingSchedule,
                 scheduleDetails:this.props.location.state.scheduleDetails,
-                grup:this.state.scheduleDetails.code.substring(0,2)
-            })
+            },console.log(this.state.trainingSchedule))
         }
     }
 
@@ -155,8 +154,8 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <label>Training Code:{scheduleDetails.code}</label>
-                                            <label>Group:{this.state.grup}</label>
+                                            <label>Training Code:{trainingSchedule.code}</label>
+                                            <label>Group:{trainingSchedule.code && trainingSchedule.code.substr(0,2)}</label>
                                             <label>Duration:{scheduleDetails.duration}</label>
                                             <label>Investment(IDR):{scheduleDetails.price}</label>
                                             <label>Date:{scheduleDetails.date}</label>
