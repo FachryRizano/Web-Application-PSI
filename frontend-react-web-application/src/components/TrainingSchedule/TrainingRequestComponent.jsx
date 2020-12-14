@@ -57,7 +57,6 @@ class TrainingRequestComponent extends Component {
         }
     }
     render() {
-        console.log(this.state.trainingSchedule)
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
         return (
             <div className="row">
@@ -108,11 +107,11 @@ class TrainingRequestComponent extends Component {
 
                                 <div className="row">
                                     <div className="col-md-6 text-justify">
-                                        <label>Golongan<p className="d-inline ml-5">: {userDetails.golongan}</p></label>
-                                        <label>NIK<p className="d-inline ml-5">: {userDetails.nik}</p></label>
-                                        <label>Posisi:{userDetails.posisi}</label>
-                                        <label>Keluarga Jabatan:{userDetails.keluargaJabatan}</label>
-                                        <label>Level:{userDetails.level}</label>
+                                        <label>Golongan:<input className="border-0" type="text" name="golongan" value={userDetails.golongan}/></label>
+                                        <label>NIK:<input className="border-0" type="text" name="nik" value={userDetails.nik}/></label>
+                                        <label>Posisi:<input className="border-0" type="text" name="posisi" value={userDetails.posisi}/></label>
+                                        <label>Keluarga Jabatan:<input className="border-0" type="text" name="keluargaJabatan" value={userDetails.keluargaJabatan}/></label>
+                                        <label>Level:<input className="border-0"type="text" name="level" value={userDetails.level}/></label>
                                         {/* Override */}
                                         <label>No.HP:<input className="ml-3"type="string" name="noHP" onChange={this.handleChange}/></label>
                                         {/* Override */}
@@ -132,10 +131,10 @@ class TrainingRequestComponent extends Component {
                                     </div>
 
                                     <div className="col-md-6 text-justify">
-                                        <label>Entitas:{userDetails.entitas}</label>
-                                        <label>Divisi:{userDetails.divisi}</label>
-                                        <label>Kota:{userDetails.kota}</label>
-                                        <label>PIC HC:{userDetails.picHC}</label>
+                                        <label>Entitas:<input className="border-0"type="text" name="entitas" value={userDetails.entitas}/></label>
+                                        <label>Divisi:<input className="border-0"type="text" name="divisi" value={userDetails.divisi}/></label>
+                                        <label>Kota:<input className="border-0"type="text" name="kota" value={userDetails.kota}/></label>
+                                        <label>PIC HC:<input className="border-0"type="text" name="picHC" value={userDetails.picHC}/></label>
                                     </div>
                                 </div>
                             </div>
@@ -156,15 +155,14 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <label>Training Code:{trainingSchedule.code}</label>
-                                            {/* <label>Group:{trainingSchedule.code && trainingSchedule.code.substr(0,2)}</label> */}
-                                            <label>Group:{trainingSchedule.kelompok}</label>
-                                            <label>Duration:{scheduleDetails.duration}</label>
-                                            <label>Investment(IDR):{scheduleDetails.price}</label>
-                                            <label>Date:{scheduleDetails.date}</label>
-                                            <label>Area Training:{scheduleDetails.location}</label>
-                                            <label>Trainer:{scheduleDetails.speakerName}</label>
-                                            <label>Vendor:{scheduleDetails.vendor}</label>
+                                            <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
+                                            <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
+                                            <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>
+                                            <label>Investment(IDR):<input className="border-0"type="text" name="price" value={scheduleDetails.price}/></label>
+                                            <label>Date:<input className="border-0"type="text" name="date" value={scheduleDetails.date}/></label>
+                                            <label>Area Training:<input className="border-0"type="text" name="location" value={scheduleDetails.location}/></label>
+                                            <label>Trainer:<input className="border-0"type="text" name="speakerName" value={scheduleDetails.speakerName}/></label>
+                                            <label>Vendor:<input className="border-0"type="text" name="kelompok" value={scheduleDetails.vendor}/></label>
                                         </div>
                                     </div>
                                 </form>
