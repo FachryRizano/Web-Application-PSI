@@ -4,8 +4,7 @@ import TrainingRequestService from '../../services/TrainingRequest/TrainingReque
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
-
-
+import PopUp from '../Popup';
 
 
 class TrainingRequestComponent extends Component {
@@ -17,7 +16,8 @@ class TrainingRequestComponent extends Component {
             trainingSchedule:{},
             scheduleDetails:{},
             ukuranKaos:"",
-            noHP:""
+            noHP:"",
+            seen:false
         }
     }
 
@@ -56,6 +56,12 @@ class TrainingRequestComponent extends Component {
                 ;break;
         }
     }
+
+    togglePop = () =>{
+        this.setState({
+         seen: !this.state.seen
+        });
+    };
     render() {
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
         return (
@@ -63,8 +69,8 @@ class TrainingRequestComponent extends Component {
                 {/*menu disebelah kiri */}
                 <div className="container col-md-2 text border-right ml-auto">
                     <div className="row p-4">
-                        <button class="btn bg-light">
-                            My Outstanding<span class="badge badge-light">(0)</span>
+                        <button className="btn bg-light">
+                            My Outstanding<span className="badge badge-light">(0)</span>
                         </button>
                     </div>
                     <LeftNavbarMenu icon="save" text="New Request" data={['By Employee','By Topics','By Company','By Location']}/>
@@ -101,7 +107,7 @@ class TrainingRequestComponent extends Component {
                             <div className="container border text-center pt-3">
                                 <div className="row">
                                     <div className="col-md-6 text-left">
-                                        <label >Name:<input disabled="true" className="ml-3"type="text" name="name" value={userDetails.nama}/></label>
+                                        <label >Name:<input className="ml-3"type="text" name="name" value={userDetails.nama}/></label>
                                     </div>
                                 </div>
 
@@ -155,6 +161,8 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
+                                            <button type="button" onClick={this.togglePop}>Table</button>
+                                            {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>
