@@ -4,8 +4,8 @@ import TrainingRequestService from '../../services/TrainingRequest/TrainingReque
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
-import PopUp from '../Popup';
-
+import Popup from 'reactjs-popup';
+import ListTrainingSchedule from '../TrainingSchedule/ListTrainingScheduleComponent';
 
 class TrainingRequestComponent extends Component {
     constructor(props){
@@ -161,8 +161,9 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <button type="button" onClick={this.togglePop}>Table</button>
-                                            {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
+                                            <Popup trigger={<button type="button"> Trigger</button>} position="right center">
+                                                <div><ListTrainingSchedule/></div>
+                                            </Popup>
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>

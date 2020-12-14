@@ -12,8 +12,6 @@ class ListTrainingScheduleComponent extends Component {
             trainingSchedules:[],
             getCurrentUser:AuthService.getCurrentUser(),
             detailsShown:[],
-            // selectedTraining:{},
-            // selectedName:null
         }
     }
 
