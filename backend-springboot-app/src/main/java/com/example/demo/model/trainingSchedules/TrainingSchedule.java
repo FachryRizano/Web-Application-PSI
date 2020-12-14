@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@EntityListeners(TrainingScheduleListener.class)
 public class TrainingSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

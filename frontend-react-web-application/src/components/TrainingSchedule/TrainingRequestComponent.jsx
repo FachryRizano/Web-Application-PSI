@@ -29,8 +29,9 @@ class TrainingRequestComponent extends Component {
             this.setState({
                 trainingSchedule:this.props.location.state.trainingSchedule,
                 scheduleDetails:this.props.location.state.scheduleDetails,
-            },console.log(this.state.trainingSchedule))
+            })
         }
+        
     }
 
     required = value => {
@@ -56,6 +57,7 @@ class TrainingRequestComponent extends Component {
         }
     }
     render() {
+        console.log(this.state.trainingSchedule)
         const {userDetails,trainingSchedule,scheduleDetails} = this.state
         return (
             <div className="row">
@@ -155,7 +157,8 @@ class TrainingRequestComponent extends Component {
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             <label>Training Code:{trainingSchedule.code}</label>
-                                            <label>Group:{trainingSchedule.code && trainingSchedule.code.substr(0,2)}</label>
+                                            {/* <label>Group:{trainingSchedule.code && trainingSchedule.code.substr(0,2)}</label> */}
+                                            <label>Group:{trainingSchedule.kelompok}</label>
                                             <label>Duration:{scheduleDetails.duration}</label>
                                             <label>Investment(IDR):{scheduleDetails.price}</label>
                                             <label>Date:{scheduleDetails.date}</label>
