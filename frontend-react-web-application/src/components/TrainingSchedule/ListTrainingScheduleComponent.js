@@ -3,7 +3,6 @@ import TrainingScheduleService from '../../services/Schedule/TrainingScheduleSer
 import {Redirect,Link} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
-import iconExpand from '../../image/icon-expand.png';
 import TrainingRequestComponent from './TrainingRequestComponent';
 
 class ListTrainingScheduleComponent extends Component {
@@ -94,7 +93,7 @@ class ListTrainingScheduleComponent extends Component {
                         <td className="column3">{ts.subjectName}</td>
                         <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                         <td className="column5">{ts.duration}</td>
-                        <td className="column6"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></td>
+                        <td className="column6"><button className="btn" onClick={()=>this.handleToggleShown(ts.id)}><i class="fa fa-angle-down"></i></button></td>
                       </tr>
                       {this.state.detailsShown.includes(ts.id) && (
                       ts.schedules.map(s=>
@@ -104,7 +103,7 @@ class ListTrainingScheduleComponent extends Component {
                           <td className="column4">{s.speakerName}</td>
                           <td className="column5">{s.price}</td>
                           {/* ralat, ini bukan linkPDF tapi untuk training request */}
-                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts.subjectName,s)}><i className="fa fa-arrow-down"></i></button></td>
+                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts.subjectName,s)}><i class="fa fa-edit"></i></button></td>
                         </tr>
                       )
                       )}

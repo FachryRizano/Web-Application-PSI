@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 import LeftNavbarMenu from '../LeftNavbarMenu';
@@ -8,6 +8,8 @@ import logo from '../../image/logo.jpg';
 import ListTrainingSchedule from "./ListTrainingScheduleComponent";
 
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 class TrainingRequestComponent extends Component {
     constructor(props){
@@ -38,6 +40,16 @@ class TrainingRequestComponent extends Component {
         }
       };
 
+    handlePopUp = ()=>{
+      return(
+      <div>
+        <Popup trigger={<button> Trigger</button>} position="right center">
+          <div><ListTrainingSchedule/></div>
+        </Popup>
+      </div>
+    );
+    }
+
     render() {
         const userDetails = this.state.userDetails
         return (
@@ -64,9 +76,64 @@ class TrainingRequestComponent extends Component {
                         <span className="formSignUpFormHeader">
                             <img src={logo} alt="Samudera Indonesia" className="formSignUpFormLogo"/>
                             <h1>SAMUDERA INDONESIA</h1>
+
+
+
+<Fragment>
+  <Popup
+    trigger={<button className="button"> Open Modal </button>}
+    modal
+    nested
+  >
+    {close => (
+      <div className="modal">
+        <button className="close" onClick={close}>
+          &times;
+        </button>
+        <div className="header"> Modal Title </div>
+        <div className="content">
+          {' '}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+          Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+          delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+          commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+          explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+        </div>
+        <div className="actions">
+          <Popup
+            trigger={<button className="button"> Trigger </button>}
+            position="top center"
+            nested
+          >
+            <span>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
+              magni omnis delectus nemo, maxime molestiae dolorem numquam
+              mollitia, voluptate ea, accusamus excepturi deleniti ratione
+              sapiente! Laudantium, aperiam doloribus. Odit, aut.
+            </span>
+          </Popup>
+          <button
+            className="button"
+            onClick={() => {
+              console.log('modal closed ');
+              close();
+            }}
+          >
+            close modal
+          </button>
+        </div>
+      </div>
+    )}
+  </Popup>
+</Fragment>
+
+
+
+
+
                         </span>
-
-
                         <h2 className="text-center">Training Request</h2>
                         {/* user profile */}
                         <div className="container col pt-4">
@@ -107,14 +174,69 @@ class TrainingRequestComponent extends Component {
                                             {/* ini harusnya periode dropdown year */}
                                             <label>Periode:<input type="text" name="periode" /></label>
                                             {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subject:
-                                              <input type="text" name="" value={this.props.scheduleDetails}/>
+                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/>
 
-                                              {/* <Popup trigger={<button> Trigger</button>} position="fixed">
-                                                <div className="popUpTrainingSchedule">
-                                                  <ListTrainingSchedule/>
-                                                </div>
-                                              </Popup> */}
+                                            {/*
+                                              <Popup trigger={<div class="btn bg-success text-white ml-1">Trigger</div>} position="bottom center">
+                                                <div><ListTrainingSchedule/></div>
+                                              </Popup>
+                                            */}
+
+
+
+
+                                              <Popup
+                                                trigger={<div className="button"> Open Modal </div>}
+                                                modal
+                                                nested
+                                              >
+                                                {close => (
+                                                  <div className="modal">
+                                                    <div className="close" onClick={close}>
+                                                      &times;
+                                                    </div>
+                                                    <div className="header"> Modal Title </div>
+                                                    <div className="content">
+                                                      {' '}
+                                                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+                                                      Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+                                                      delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+                                                      <br />
+                                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+                                                      commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+                                                      explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+                                                    </div>
+                                                    <div className="actions">
+                                                      <Popup
+                                                        trigger={<div className="button"> Trigger </div>}
+                                                        position="top center"
+                                                        nested
+                                                      >
+                                                        <span>
+                                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
+                                                          magni omnis delectus nemo, maxime molestiae dolorem numquam
+                                                          mollitia, voluptate ea, accusamus excepturi deleniti ratione
+                                                          sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                                                        </span>
+                                                      </Popup>
+                                                      <div
+                                                        className="button"
+                                                        onClick={() => {
+                                                          console.log('modal closed ');
+                                                          close();
+                                                        }}
+                                                      >
+                                                        close modal
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                )}
+                                              </Popup>
+
+
+
+
+
                                             </label>
                                             <label>Training Code:</label>
                                             <label>Group:</label>
