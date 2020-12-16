@@ -2,18 +2,24 @@ package com.example.demo.model.trainingSchedules;
 
 import com.example.demo.model.trainingSchedules.Participant;
 import com.example.demo.model.trainingSchedules.Schedule;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@EntityListeners(TrainingScheduleListener.class)
 public class TrainingSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private String subjectName;
+    private String kelompok;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="ts_w_P",
@@ -34,10 +40,11 @@ public class TrainingSchedule {
 
     }
 
-    public TrainingSchedule(String code, String subjectName, String duration) {
+    public TrainingSchedule(String code, String subjectName, String duration, String kelompok) {
         this.code = code;
         this.subjectName = subjectName;
         this.duration = duration;
+        this.kelompok = kelompok;
     }
 
     public Long getId() {
@@ -83,4 +90,13 @@ public class TrainingSchedule {
     public void setParticipants(Set<Participant> participants) {
         this.participants = participants;
     }
+
+    public String getKelompok() {
+        return kelompok;
+    }
+
+    public void setKelompok(String kelompok) {
+        this.kelompok = kelompok;
+    }
+
 }

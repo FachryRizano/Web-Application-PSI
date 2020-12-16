@@ -20,14 +20,14 @@ public class UserDetails {
     private String entitas;
     private String divisi;
     private String kota;
-    private String pichHC;
+    private String picHC;
 
 
     public UserDetails(){
 
     }
 
-    public UserDetails(Long nik, String nama, int golongan, String posisi, String keluargaJabatan, String level, String entitas, String divisi, String kota, String pichHC) {
+    public UserDetails(Long nik, String nama, int golongan, String posisi, String keluargaJabatan, String level, String entitas, String divisi, String kota, String picHC) {
         this.nik = nik;
         this.nama = nama;
         this.golongan = golongan;
@@ -37,7 +37,7 @@ public class UserDetails {
         this.entitas = entitas;
         this.divisi = divisi;
         this.kota = kota;
-        this.pichHC = pichHC;
+        this.picHC = picHC;
     }
 
     public Long getNik() {
@@ -128,12 +128,12 @@ public class UserDetails {
         this.kota = kota;
     }
 
-    public String getPichHC() {
-        return pichHC;
+    public String getPicHC() {
+        return picHC;
     }
 
-    public void setPichHC(String pichHC) {
-        this.pichHC = pichHC;
+    public void setPicHC(String picHC) {
+        this.picHC = picHC;
     }
 
 }

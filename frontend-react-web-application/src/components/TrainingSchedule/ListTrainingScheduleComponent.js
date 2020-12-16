@@ -1,6 +1,6 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component} from 'react';
 import TrainingScheduleService from '../../services/Schedule/TrainingScheduleService';
-import {Redirect,Link} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
 import TrainingRequestComponent from './TrainingRequestComponent';
@@ -12,8 +12,6 @@ class ListTrainingScheduleComponent extends Component {
             trainingSchedules:[],
             getCurrentUser:AuthService.getCurrentUser(),
             detailsShown:[],
-            // selectedTraining:{},
-            // selectedName:null
         }
     }
 
@@ -31,11 +29,11 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (subjectName,scheduleDetails)=>{
+    handleRequestTraining = (trainingSchedule,scheduleDetails)=>{
       this.props.history.push({
         pathname:'/training-request',
         state:{
-          subjectName,
+          trainingSchedule,
           scheduleDetails
         }
       })
@@ -65,12 +63,14 @@ class ListTrainingScheduleComponent extends Component {
               <div className="container">
 
                 <div className="dropdownPeriodeTrainingSchedule">
-                  <label for="periodeTrainingSchedule">Pilih Periode:</label>
-                  <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                  </select>
+                  <label htmlFor="periodeTrainingSchedule">Pilih Periode:
+                    <select name="periodeTrainingSchedule" id="periodeTrainingSchedule">
+                      <option value="2019">2019</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                    </select>
+                  </label>
+
                 </div>
 
                 <div className="table100">

@@ -1,5 +1,7 @@
 package com.example.demo.model.trainingSchedules;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,19 +16,18 @@ public class Schedule {
     private Date date;
     private String location;
     private String speakerName;
-    private String linkPDF;
     private int price;
-
+    private String vendor;
     public Schedule(){
 
     }
 
-    public Schedule(Date date, String location, String speakerName, String linkPDF, int price) {
+    public Schedule(Date date, String location, String speakerName, int price, String vendor) {
         this.date = date;
         this.location = location;
         this.speakerName = speakerName;
-        this.linkPDF = linkPDF;
         this.price = price;
+        this.vendor = vendor;
     }
 
     public int getPrice() {
@@ -61,11 +62,11 @@ public class Schedule {
         this.speakerName = speakerName;
     }
 
-    public String getLinkPDF() {
-        return linkPDF;
+    public String getVendor() {
+        return vendor;
     }
 
-    public void setLinkPDF(String linkPDF) {
-        this.linkPDF = linkPDF;
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
     }
 }
