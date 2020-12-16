@@ -1,3 +1,5 @@
+
+package com.example.demo.model.trainingRequest;
 import com.example.demo.model.user.userdetails.UserDetails;
 
 import javax.persistence.Entity;
@@ -5,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
-
 @Entity
 public class TrainingRequest{
     @Id
