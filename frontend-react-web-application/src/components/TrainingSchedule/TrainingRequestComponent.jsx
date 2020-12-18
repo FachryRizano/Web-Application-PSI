@@ -25,6 +25,7 @@ class TrainingRequestComponent extends Component {
         TrainingRequestService.getUserDetails(this.state.user.id).then(res=>{
             this.setState({userDetails:res.data})
         })
+
         if(this.props.location.state !== undefined){
             this.setState({
                 trainingSchedule:this.props.location.state.trainingSchedule,
@@ -32,6 +33,20 @@ class TrainingRequestComponent extends Component {
             })
         }
         
+    }
+
+    handleTraining = (trainingSchedule)=>{
+        this.setState({
+            trainingSchedule:trainingSchedule,
+        })
+        console.log(this.state.trainingSchedule)
+    }
+
+    handleSchedule = (scheduleDetails)=>{
+        this.setState({
+            scheduleDetails:scheduleDetails
+        })
+        console.log(this.state.scheduleDetails)
     }
 
     required = value => {
@@ -160,10 +175,16 @@ class TrainingRequestComponent extends Component {
                                                     <option value="2021">2021</option>
                                                 </select>
                                             </label>
-                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             <Popup trigger={<button type="button"> Table</button>} position="right center">
-                                                <div><ListTrainingSchedule /></div>
+                                                <div>
+                                                    <ListTrainingSchedule 
+                                                    trainingSchedule={this.handleTraining}
+                                                    scheduleDetails={this.handleSchedule}/>
+                                                </div>
                                             </Popup>
+                                            
+                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
+                                            
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>

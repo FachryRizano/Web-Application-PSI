@@ -29,15 +29,23 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (trainingSchedule,scheduleDetails)=>{
+    handleRequestTraining = (ts,s)=>{
+      // this.props.history.push({
+      //   pathname:'/training-request',
+      //   state:{
+      //     trainingSchedule,
+      //     scheduleDetails
+      //   }
+      // })
+      var trainingSchedule = ts
+      var scheduleDetails = s
+      this.props.trainingSchedule(trainingSchedule)
+      this.props.scheduleDetails(scheduleDetails)
       this.props.history.push({
-        pathname:'/training-request',
-        state:{
-          trainingSchedule,
-          scheduleDetails
-        }
+        pathname:"/training-request"
       })
     }
+
     // Toggle untuk display schedule details 
     handleToggleShown= id=>{
         const shownState = this.state.detailsShown.slice();
