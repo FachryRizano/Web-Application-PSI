@@ -3,8 +3,6 @@ import TrainingScheduleService from '../../services/Schedule/TrainingScheduleSer
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
-import TrainingRequestComponent from './TrainingRequestComponent';
-
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -30,20 +28,7 @@ class ListTrainingScheduleComponent extends Component {
     }
 
     handleRequestTraining = (ts,s)=>{
-      // this.props.history.push({
-      //   pathname:'/training-request',
-      //   state:{
-      //     trainingSchedule,
-      //     scheduleDetails
-      //   }
-      // })
-      var trainingSchedule = ts
-      var scheduleDetails = s
-      console.log(trainingSchedule)
-      console.log(scheduleDetails)
-      // this.props.history.push({
-      //   pathname:"/training-request"
-      // })
+      
     }
 
     // Toggle untuk display schedule details 

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 import LeftNavbarMenu from '../LeftNavbarMenu';
@@ -30,12 +30,12 @@ class TrainingRequestComponent extends Component {
             this.setState({userDetails:res.data})
         })
 
-        if(this.props.location.state !== undefined){
-            this.setState({
-                trainingSchedule:this.props.location.state.trainingSchedule,
-                scheduleDetails:this.props.location.state.scheduleDetails,
-            })
-        }
+        // if(this.props.location.state !== undefined){
+        //     this.setState({
+        //         trainingSchedule:this.props.location.state.trainingSchedule,
+        //         scheduleDetails:this.props.location.state.scheduleDetails,
+        //     })
+        // }
 
     }
 
@@ -178,74 +178,7 @@ class TrainingRequestComponent extends Component {
                                 <form>
                                     <div className="container border row text-left">
                                         <div className="col-md-6">
-                                            {/* ini harusnya periode dropdown year */}
-
-                                            <label>Periode:<input type="text" name="periode" /></label>
                                             {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
-
-                                            {/*
-                                              <Popup trigger={<div class="btn bg-success text-white ml-1">Trigger</div>} position="bottom center">
-                                                <div><ListTrainingSchedule/></div>
-                                              </Popup>
-                                            */}
-
-
-
-
-                                              <Popup
-                                                trigger={<div className="button"> Open Modal </div>}
-                                                modal
-                                                nested
-                                              >
-                                                {close => (
-                                                  <div className="modal">
-                                                    <div className="close" onClick={close}>
-                                                      &times;
-                                                    </div>
-                                                    <div className="header"> Modal Title </div>
-                                                    <div className="content">
-                                                      {' '}
-                                                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                                                      Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                                                      delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                                                      <br />
-                                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                                                      commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                                                      explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-                                                    </div>
-                                                    <div className="actions">
-                                                      <Popup
-                                                        trigger={<div className="button"> Trigger </div>}
-                                                        position="top center"
-                                                        nested
-                                                      >
-                                                        <span>
-                                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                                                          magni omnis delectus nemo, maxime molestiae dolorem numquam
-                                                          mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                                                          sapiente! Laudantium, aperiam doloribus. Odit, aut.
-                                                        </span>
-                                                      </Popup>
-                                                      <div
-                                                        className="button"
-                                                        onClick={() => {
-                                                          console.log('modal closed ');
-                                                          close();
-                                                        }}
-                                                      >
-                                                        close modal
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                )}
-                                              </Popup>
-
-
-
-
-
-
                                             <label htmlFor="ukuranKaos">Periode:
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
@@ -255,6 +188,8 @@ class TrainingRequestComponent extends Component {
                                                 </select>
 
                                             </label>
+                                            
+                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
                                             <Popup trigger={<button type="button"> Table</button>} position="right center">
                                                 <div>
                                                     <ListTrainingSchedule 
