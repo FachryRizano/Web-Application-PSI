@@ -1,18 +1,22 @@
 
 package com.example.demo.model.trainingRequest;
-import com.example.demo.model.user.userdetails.UserDetails;
+import com.example.demo.model.user.userdetails.UserDetails;;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class TrainingRequest{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Long id;
-    private UserDetails userDetails;
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(name="tr_w_ud",
+            joinColumns = @JoinColumn(name="training_request_id"),
+            inverseJoinColumns = @JoinColumn(name="user_details_id"))
+    private Set<UserDetails> userDetails = new HashSet<>();
     private String subjectName;
     private String code;
     private String kelompok;
@@ -23,8 +27,7 @@ public class TrainingRequest{
     private String speakerName;
     private String vendor;
 
-    public TrainingRequest(UserDetails userDetails, String subjectName, String code, String kelompok, String duration, int price, Date date, String location, String speakerName, String vendor) {
-        this.userDetails = userDetails;
+    public TrainingRequest( String subjectName, String code, String kelompok, String duration, int price, Date date, String location, String speakerName, String vendor) {
         this.subjectName = subjectName;
         this.code = code;
         this.kelompok = kelompok;
@@ -44,11 +47,11 @@ public class TrainingRequest{
         this.id = id;
     }
 
-    public UserDetails getUserDetails() {
+    public Set<UserDetails> getUserDetails() {
         return userDetails;
     }
 
-    public void setUserDetails(UserDetails userDetails) {
+    public void setUserDetails(Set<UserDetails> userDetails) {
         this.userDetails = userDetails;
     }
 

@@ -161,8 +161,8 @@ class TrainingRequestComponent extends Component {
                                                 </select>
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <Popup trigger={<button type="button"> Trigger</button>} position="right center">
-                                                <div><ListTrainingSchedule/></div>
+                                            <Popup trigger={<button type="button"> Table</button>} position="right center">
+                                                <div><ListTrainingSchedule /></div>
                                             </Popup>
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>

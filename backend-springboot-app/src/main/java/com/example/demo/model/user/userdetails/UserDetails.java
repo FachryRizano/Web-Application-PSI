@@ -1,5 +1,6 @@
 package com.example.demo.model.user.userdetails;
 
+import com.example.demo.model.trainingRequest.TrainingRequest;
 import com.example.demo.model.user.User;
 
 import javax.persistence.*;
@@ -21,7 +22,6 @@ public class UserDetails {
     private String divisi;
     private String kota;
     private String picHC;
-
 
     public UserDetails(){
 
