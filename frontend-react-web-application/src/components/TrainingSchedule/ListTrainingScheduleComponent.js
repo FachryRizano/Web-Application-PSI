@@ -39,11 +39,11 @@ class ListTrainingScheduleComponent extends Component {
       // })
       var trainingSchedule = ts
       var scheduleDetails = s
-      this.props.trainingSchedule(trainingSchedule)
-      this.props.scheduleDetails(scheduleDetails)
-      this.props.history.push({
-        pathname:"/training-request"
-      })
+      console.log(trainingSchedule)
+      console.log(scheduleDetails)
+      // this.props.history.push({
+      //   pathname:"/training-request"
+      // })
     }
 
     // Toggle untuk display schedule details 
