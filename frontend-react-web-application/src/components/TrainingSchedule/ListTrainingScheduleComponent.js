@@ -3,7 +3,7 @@ import TrainingScheduleService from '../../services/Schedule/TrainingScheduleSer
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
-import iconExpand from '../../image/icon-expand.png';
+import TrainingRequestComponent from './TrainingRequestComponent';
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
@@ -78,7 +78,7 @@ class ListTrainingScheduleComponent extends Component {
                       <option value="2021">2021</option>
                     </select>
                   </label>
-                  
+
                 </div>
 
                 <div className="table100">
@@ -101,7 +101,7 @@ class ListTrainingScheduleComponent extends Component {
                         <td className="column3">{ts.subjectName}</td>
                         <td className="column4">{ts.participant.map(p=>p.name + ", ")}</td>
                         <td className="column5">{ts.duration}</td>
-                        <td className="column6"><button className="border-0"><img src={ iconExpand } alt="Expand" onClick={()=>this.handleToggleShown(ts.id)}/></button></td>
+                        <td className="column6"><button className="btn" onClick={()=>this.handleToggleShown(ts.id)}><i class="fa fa-angle-down"></i></button></td>
                       </tr>
                       {this.state.detailsShown.includes(ts.id) && (
                       ts.schedules.map(s=>

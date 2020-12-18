@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
+
+import ListTrainingSchedule from "./ListTrainingScheduleComponent";
+
+
 import Popup from 'reactjs-popup';
-import ListTrainingSchedule from '../TrainingSchedule/ListTrainingScheduleComponent';
+import 'reactjs-popup/dist/index.css';
 
 class TrainingRequestComponent extends Component {
     constructor(props){
@@ -32,7 +36,7 @@ class TrainingRequestComponent extends Component {
                 scheduleDetails:this.props.location.state.scheduleDetails,
             })
         }
-        
+
     }
 
     handleTraining = (trainingSchedule)=>{
@@ -58,7 +62,7 @@ class TrainingRequestComponent extends Component {
           );
         }
       };
-    
+
     handleChange =(e)=>{
         switch(e.target.name){
             case "ukuranKaos":
@@ -97,24 +101,31 @@ class TrainingRequestComponent extends Component {
                 <div className="container pt-3 col-md-9 text-left">
                     {/*button diatas user profile */}
                     <div className="container bg-danger rounded-pill row">
-                        <div className="col-md-8 pt-3 pb-2">
+                        <div className="col-md-10 pt-3 pb-2">
                             <Button icon="save" text="Save"/>
                             <Button icon="arrow-right" text="Submit"/>
                             <Button icon="trash" text="Cancel Request"/>
                             <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
                         </div>
-                        <div className="col-md-4 text-right pt-4">
+                        <div className="col-md-2 text-right pt-4">
                             <a>Go to bottom</a>
                         </div>
                     </div>
 
-                    <div className="container  mt-4 row-12">
+                    <div className="container  mt-4 row-12 text-center">
                         <span className="formSignUpFormHeader">
                             <img src={logo} alt="Samudera Indonesia" className="formSignUpFormLogo mt-2"/>
                             <h1>SAMUDERA INDONESIA</h1>
+
+
+
+
+
+
+
+
+
                         </span>
-
-
                         <h2 className="text-center">Training Request</h2>
                         {/* user profile */}
                         <div className="container col pt-4">
@@ -136,7 +147,7 @@ class TrainingRequestComponent extends Component {
                                         {/* Override */}
                                         <label>No.HP:<input className="ml-3"type="string" name="noHP" onChange={this.handleChange}/></label>
                                         {/* Override */}
-                                        <label htmlFor="ukuranKaos">Ukuran Kaos: 
+                                        <label htmlFor="ukuranKaos">Ukuran Kaos:
                                             <select className="ml-3" defaultValue={this.state.ukuranKaos} name="ukuranKaos" id="periodeTrainingSchedule" onChange={this.handleChange}>
                                                 <option value=""></option>
                                                 <option value="1">S</option>
@@ -147,7 +158,7 @@ class TrainingRequestComponent extends Component {
                                                 <option value="6">XXXL</option>
                                             </select>
                                         </label>
-                                        
+
 
                                     </div>
 
@@ -163,17 +174,86 @@ class TrainingRequestComponent extends Component {
                             {/* pilihan training schedul yang ingin diikuti */}
                             <div className="container bg-light pt-4">
                                 {/* Refactor */}
+
                                 <form>
                                     <div className="container border row text-left">
                                         <div className="col-md-6">
                                             {/* ini harusnya periode dropdown year */}
-                                            <label htmlFor="ukuranKaos">Periode: 
+
+                                            <label>Periode:<input type="text" name="periode" /></label>
+                                            {/* masukkan subject name untuk memilih training yang diinginkan     */}
+                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
+
+                                            {/*
+                                              <Popup trigger={<div class="btn bg-success text-white ml-1">Trigger</div>} position="bottom center">
+                                                <div><ListTrainingSchedule/></div>
+                                              </Popup>
+                                            */}
+
+
+
+
+                                              <Popup
+                                                trigger={<div className="button"> Open Modal </div>}
+                                                modal
+                                                nested
+                                              >
+                                                {close => (
+                                                  <div className="modal">
+                                                    <div className="close" onClick={close}>
+                                                      &times;
+                                                    </div>
+                                                    <div className="header"> Modal Title </div>
+                                                    <div className="content">
+                                                      {' '}
+                                                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+                                                      Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+                                                      delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+                                                      <br />
+                                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+                                                      commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+                                                      explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+                                                    </div>
+                                                    <div className="actions">
+                                                      <Popup
+                                                        trigger={<div className="button"> Trigger </div>}
+                                                        position="top center"
+                                                        nested
+                                                      >
+                                                        <span>
+                                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
+                                                          magni omnis delectus nemo, maxime molestiae dolorem numquam
+                                                          mollitia, voluptate ea, accusamus excepturi deleniti ratione
+                                                          sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                                                        </span>
+                                                      </Popup>
+                                                      <div
+                                                        className="button"
+                                                        onClick={() => {
+                                                          console.log('modal closed ');
+                                                          close();
+                                                        }}
+                                                      >
+                                                        close modal
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                )}
+                                              </Popup>
+
+
+
+
+
+
+                                            <label htmlFor="ukuranKaos">Periode:
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
                                                     <option value="2019">2019</option>
                                                     <option value="2020">2020</option>
                                                     <option value="2021">2021</option>
                                                 </select>
+
                                             </label>
                                             <Popup trigger={<button type="button"> Table</button>} position="right center">
                                                 <div>
