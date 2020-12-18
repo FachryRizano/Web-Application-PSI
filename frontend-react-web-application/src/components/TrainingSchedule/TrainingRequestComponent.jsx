@@ -86,73 +86,25 @@ class TrainingRequestComponent extends Component {
                 <div className="container pt-3 col-md-9 text-left">
                     {/*button diatas user profile */}
                     <div className="container bg-danger rounded-pill row">
-                        <div className="col-md-8 pt-3 pb-2">
+                        <div className="col-md-10 pt-3 pb-2">
                             <Button icon="save" text="Save"/>
                             <Button icon="arrow-right" text="Submit"/>
                             <Button icon="trash" text="Cancel Request"/>
                             <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
                         </div>
-                        <div className="col-md-4 text-right pt-4">
+                        <div className="col-md-2 text-right pt-4">
                             <a>Go to bottom</a>
                         </div>
                     </div>
 
-                    <div className="container  mt-4 row-12">
+                    <div className="container  mt-4 row-12 text-center">
                         <span className="formSignUpFormHeader">
                             <img src={logo} alt="Samudera Indonesia" className="formSignUpFormLogo mt-2"/>
                             <h1>SAMUDERA INDONESIA</h1>
 
 
 
-<Fragment>
-  <Popup
-    trigger={<button className="button"> Open Modal </button>}
-    modal
-    nested
-  >
-    {close => (
-      <div className="modal">
-        <button className="close" onClick={close}>
-          &times;
-        </button>
-        <div className="header"> Modal Title </div>
-        <div className="content">
-          {' '}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-          Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-          delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-          <br />
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-          commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-          explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-        </div>
-        <div className="actions">
-          <Popup
-            trigger={<button className="button"> Trigger </button>}
-            position="top center"
-            nested
-          >
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-              magni omnis delectus nemo, maxime molestiae dolorem numquam
-              mollitia, voluptate ea, accusamus excepturi deleniti ratione
-              sapiente! Laudantium, aperiam doloribus. Odit, aut.
-            </span>
-          </Popup>
-          <button
-            className="button"
-            onClick={() => {
-              console.log('modal closed ');
-              close();
-            }}
-          >
-            close modal
-          </button>
-        </div>
-      </div>
-    )}
-  </Popup>
-</Fragment>
+
 
 
 
@@ -207,14 +159,15 @@ class TrainingRequestComponent extends Component {
                             {/* pilihan training schedul yang ingin diikuti */}
                             <div className="container bg-light pt-4">
                                 {/* Refactor */}
+
                                 <form>
                                     <div className="container border row text-left">
                                         <div className="col-md-6">
                                             {/* ini harusnya periode dropdown year */}
-<<<<<<< HEAD
+
                                             <label>Periode:<input type="text" name="periode" /></label>
                                             {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/>
+                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
 
                                             {/*
                                               <Popup trigger={<div class="btn bg-success text-white ml-1">Trigger</div>} position="bottom center">
@@ -277,7 +230,7 @@ class TrainingRequestComponent extends Component {
 
 
 
-=======
+
                                             <label htmlFor="ukuranKaos">Periode:
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
@@ -285,7 +238,7 @@ class TrainingRequestComponent extends Component {
                                                     <option value="2020">2020</option>
                                                     <option value="2021">2021</option>
                                                 </select>
->>>>>>> de7192e551519c016787353cdf8a6288ed5bcb51
+
                                             </label>
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             <Popup trigger={<button type="button"> Trigger</button>} position="right center">
