@@ -101,14 +101,14 @@ class TrainingRequestComponent extends Component {
                 <div className="container pt-3 col-md-9 text-left">
                     {/*button diatas user profile */}
                     <div className="container bg-danger rounded-pill row">
-                        <div className="col-md-10 pt-3 pb-2">
-                            <Button icon="save" text="Save"/>
-                            <Button icon="arrow-right" text="Submit"/>
-                            <Button icon="trash" text="Cancel Request"/>
-                            <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
+                        <div className="col-md-9 pt-3 pb-2">
+                            <Button icon="save" text=" Save"/>
+                            <Button icon="arrow-right" text=" Submit"/>
+                            <Button icon="trash" text=" Cancel Request"/>
+                            <Button icon="bell" text=" Renotify to Karyawan/PIC HC"/>
                         </div>
-                        <div className="col-md-2 text-right pt-4">
-                            <a>Go to bottom</a>
+                        <div className="col-md-3 text-right pt-3">
+                            <a href="#goToBottom"><Button icon="arrow-down" text=" Go to bottom"/></a>
                         </div>
                     </div>
 
@@ -176,9 +176,8 @@ class TrainingRequestComponent extends Component {
                                 {/* Refactor */}
 
                                 <form>
-                                    <div className="container border row text-left">
+                                    <div className="container border row text-left" id="goToBottom">
                                         <div className="col-md-6">
-                                            {/* masukkan subject name untuk memilih training yang diinginkan     */}
                                             <label htmlFor="ukuranKaos">Periode:
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
@@ -188,19 +187,17 @@ class TrainingRequestComponent extends Component {
                                                 </select>
 
                                             </label>
-                                            
+
                                             <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
                                             <Popup trigger={<button type="button"> Table</button>} position="right center">
                                                 <div>
-                                                    <ListTrainingSchedule 
+                                                    <ListTrainingSchedule
                                                     trainingSchedule={this.handleTraining}
                                                     scheduleDetails={this.handleSchedule}/>
                                                 </div>
                                             </Popup>
-                                            
-                                            
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            
+
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>
