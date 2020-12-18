@@ -198,6 +198,7 @@ class TrainingRequestComponent extends Component {
                                                 </div>
                                             </Popup>
                                             
+                                            
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
