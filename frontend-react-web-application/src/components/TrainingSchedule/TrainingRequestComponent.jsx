@@ -86,14 +86,14 @@ class TrainingRequestComponent extends Component {
                 <div className="container pt-3 col-md-9 text-left">
                     {/*button diatas user profile */}
                     <div className="container bg-danger rounded-pill row">
-                        <div className="col-md-10 pt-3 pb-2">
-                            <Button icon="save" text="Save"/>
-                            <Button icon="arrow-right" text="Submit"/>
-                            <Button icon="trash" text="Cancel Request"/>
-                            <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
+                        <div className="col-md-9 pt-3 pb-2">
+                            <Button icon="save" text=" Save"/>
+                            <Button icon="arrow-right" text=" Submit"/>
+                            <Button icon="trash" text=" Cancel Request"/>
+                            <Button icon="bell" text=" Renotify to Karyawan/PIC HC"/>
                         </div>
-                        <div className="col-md-2 text-right pt-4">
-                            <a>Go to bottom</a>
+                        <div className="col-md-3 text-right pt-3">
+                            <a href="#goToBottom"><Button icon="arrow-down" text=" Go to bottom"/></a>
                         </div>
                     </div>
 
@@ -161,7 +161,7 @@ class TrainingRequestComponent extends Component {
                                 {/* Refactor */}
 
                                 <form>
-                                    <div className="container border row text-left">
+                                    <div className="container border row text-left" id="goToBottom">
                                         <div className="col-md-6">
                                             {/* ini harusnya periode dropdown year */}
 
@@ -178,54 +178,7 @@ class TrainingRequestComponent extends Component {
 
 
 
-                                              <Popup
-                                                trigger={<div className="button"> Open Modal </div>}
-                                                modal
-                                                nested
-                                              >
-                                                {close => (
-                                                  <div className="modal">
-                                                    <div className="close" onClick={close}>
-                                                      &times;
-                                                    </div>
-                                                    <div className="header"> Modal Title </div>
-                                                    <div className="content">
-                                                      {' '}
-                                                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                                                      Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                                                      delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                                                      <br />
-                                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                                                      commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                                                      explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-                                                    </div>
-                                                    <div className="actions">
-                                                      <Popup
-                                                        trigger={<div className="button"> Trigger </div>}
-                                                        position="top center"
-                                                        nested
-                                                      >
-                                                        <span>
-                                                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                                                          magni omnis delectus nemo, maxime molestiae dolorem numquam
-                                                          mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                                                          sapiente! Laudantium, aperiam doloribus. Odit, aut.
-                                                        </span>
-                                                      </Popup>
-                                                      <div
-                                                        className="button"
-                                                        onClick={() => {
-                                                          console.log('modal closed ');
-                                                          close();
-                                                        }}
-                                                      >
-                                                        close modal
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                                )}
-                                              </Popup>
-
+                                              
 
 
 
