@@ -1,15 +1,11 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
-
-import ListTrainingSchedule from "./ListTrainingScheduleComponent";
-
-
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import ListTrainingSchedule from '../TrainingSchedule/ListTrainingScheduleComponent';
 
 class TrainingRequestComponent extends Component {
     constructor(props){
@@ -30,13 +26,13 @@ class TrainingRequestComponent extends Component {
             this.setState({userDetails:res.data})
         })
 
-        // if(this.props.location.state !== undefined){
-        //     this.setState({
-        //         trainingSchedule:this.props.location.state.trainingSchedule,
-        //         scheduleDetails:this.props.location.state.scheduleDetails,
-        //     })
-        // }
-
+        if(this.props.location.state !== undefined){
+            this.setState({
+                trainingSchedule:this.props.location.state.trainingSchedule,
+                scheduleDetails:this.props.location.state.scheduleDetails,
+            })
+        }
+        
     }
 
     handleTraining = (trainingSchedule)=>{
@@ -62,7 +58,7 @@ class TrainingRequestComponent extends Component {
           );
         }
       };
-
+    
     handleChange =(e)=>{
         switch(e.target.name){
             case "ukuranKaos":
@@ -101,31 +97,24 @@ class TrainingRequestComponent extends Component {
                 <div className="container pt-3 col-md-9 text-left">
                     {/*button diatas user profile */}
                     <div className="container bg-danger rounded-pill row">
-                        <div className="col-md-9 pt-3 pb-2">
-                            <Button icon="save" text=" Save"/>
-                            <Button icon="arrow-right" text=" Submit"/>
-                            <Button icon="trash" text=" Cancel Request"/>
-                            <Button icon="bell" text=" Renotify to Karyawan/PIC HC"/>
+                        <div className="col-md-8 pt-3 pb-2">
+                            <Button icon="save" text="Save"/>
+                            <Button icon="arrow-right" text="Submit"/>
+                            <Button icon="trash" text="Cancel Request"/>
+                            <Button icon="bell" text="Renotify to Karyawan/PIC HC"/>
                         </div>
-                        <div className="col-md-3 text-right pt-3">
-                            <a href="#goToBottom"><Button icon="arrow-down" text=" Go to bottom"/></a>
+                        <div className="col-md-4 text-right pt-4">
+                            <a>Go to bottom</a>
                         </div>
                     </div>
 
-                    <div className="container  mt-4 row-12 text-center">
+                    <div className="container  mt-4 row-12">
                         <span className="formSignUpFormHeader">
                             <img src={logo} alt="Samudera Indonesia" className="formSignUpFormLogo mt-2"/>
                             <h1>SAMUDERA INDONESIA</h1>
-
-
-
-
-
-
-
-
-
                         </span>
+
+
                         <h2 className="text-center">Training Request</h2>
                         {/* user profile */}
                         <div className="container col pt-4">
@@ -147,7 +136,7 @@ class TrainingRequestComponent extends Component {
                                         {/* Override */}
                                         <label>No.HP:<input className="ml-3"type="string" name="noHP" onChange={this.handleChange}/></label>
                                         {/* Override */}
-                                        <label htmlFor="ukuranKaos">Ukuran Kaos:
+                                        <label htmlFor="ukuranKaos">Ukuran Kaos: 
                                             <select className="ml-3" defaultValue={this.state.ukuranKaos} name="ukuranKaos" id="periodeTrainingSchedule" onChange={this.handleChange}>
                                                 <option value=""></option>
                                                 <option value="1">S</option>
@@ -158,7 +147,7 @@ class TrainingRequestComponent extends Component {
                                                 <option value="6">XXXL</option>
                                             </select>
                                         </label>
-
+                                        
 
                                     </div>
 
@@ -174,30 +163,28 @@ class TrainingRequestComponent extends Component {
                             {/* pilihan training schedul yang ingin diikuti */}
                             <div className="container bg-light pt-4">
                                 {/* Refactor */}
-
                                 <form>
-                                    <div className="container border row text-left" id="goToBottom">
+                                    <div className="container border row text-left">
                                         <div className="col-md-6">
-                                            <label htmlFor="ukuranKaos">Periode:
+                                            {/* ini harusnya periode dropdown year */}
+                                            <label htmlFor="ukuranKaos">Periode: 
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
                                                     <option value="2019">2019</option>
                                                     <option value="2020">2020</option>
                                                     <option value="2021">2021</option>
                                                 </select>
-
                                             </label>
-
-                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
                                             <Popup trigger={<button type="button"> Table</button>} position="right center">
                                                 <div>
-                                                    <ListTrainingSchedule
+                                                    <ListTrainingSchedule 
                                                     trainingSchedule={this.handleTraining}
                                                     scheduleDetails={this.handleSchedule}/>
                                                 </div>
                                             </Popup>
+                                            
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-
+                                            
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>
