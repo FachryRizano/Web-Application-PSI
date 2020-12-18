@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import authService from '../../services/auth/auth.service';
 import TrainingRequestService from '../../services/TrainingRequest/TrainingRequestService';
 import LeftNavbarMenu from '../LeftNavbarMenu';
@@ -29,13 +29,28 @@ class TrainingRequestComponent extends Component {
         TrainingRequestService.getUserDetails(this.state.user.id).then(res=>{
             this.setState({userDetails:res.data})
         })
-        if(this.props.location.state !== undefined){
-            this.setState({
-                trainingSchedule:this.props.location.state.trainingSchedule,
-                scheduleDetails:this.props.location.state.scheduleDetails,
-            })
-        }
 
+        // if(this.props.location.state !== undefined){
+        //     this.setState({
+        //         trainingSchedule:this.props.location.state.trainingSchedule,
+        //         scheduleDetails:this.props.location.state.scheduleDetails,
+        //     })
+        // }
+
+    }
+
+    handleTraining = (trainingSchedule)=>{
+        this.setState({
+            trainingSchedule:trainingSchedule,
+        })
+        console.log(this.state.trainingSchedule)
+    }
+
+    handleSchedule = (scheduleDetails)=>{
+        this.setState({
+            scheduleDetails:scheduleDetails
+        })
+        console.log(this.state.scheduleDetails)
     }
 
     required = value => {
@@ -163,27 +178,6 @@ class TrainingRequestComponent extends Component {
                                 <form>
                                     <div className="container border row text-left" id="goToBottom">
                                         <div className="col-md-6">
-                                            {/* ini harusnya periode dropdown year */}
-
-                                            <label>Periode:<input type="text" name="periode" /></label>
-                                            {/* masukkan subject name untuk memilih training yang diinginkan     */}
-                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
-
-                                            {/*
-                                              <Popup trigger={<div class="btn bg-success text-white ml-1">Trigger</div>} position="bottom center">
-                                                <div><ListTrainingSchedule/></div>
-                                              </Popup>
-                                            */}
-
-
-
-
-                                              
-
-
-
-
-
                                             <label htmlFor="ukuranKaos">Periode:
                                                 <select className="ml-3" name="periodeTrainingSchedule" id="periodeTrainingSchedule">
                                                     <option value=""></option>
@@ -193,10 +187,18 @@ class TrainingRequestComponent extends Component {
                                                 </select>
 
                                             </label>
-                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
-                                            <Popup trigger={<button type="button"> Trigger</button>} position="right center">
-                                                <div><ListTrainingSchedule/></div>
+
+                                            <label>Subject:<input type="text" name="" value={this.props.scheduleDetails}/></label>
+                                            <Popup trigger={<button type="button"> Table</button>} position="right center">
+                                                <div>
+                                                    <ListTrainingSchedule
+                                                    trainingSchedule={this.handleTraining}
+                                                    scheduleDetails={this.handleSchedule}/>
+                                                </div>
                                             </Popup>
+
+                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
+
                                             <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
                                             <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
                                             <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>

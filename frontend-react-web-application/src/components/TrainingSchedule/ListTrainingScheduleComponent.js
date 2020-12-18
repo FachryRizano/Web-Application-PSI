@@ -3,8 +3,6 @@ import TrainingScheduleService from '../../services/Schedule/TrainingScheduleSer
 import {Redirect} from "react-router-dom";
 import AuthService from "../../services/auth/auth.service";
 
-import TrainingRequestComponent from './TrainingRequestComponent';
-
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
         super(props);
@@ -29,16 +27,11 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (trainingSchedule,scheduleDetails)=>{
-      this.props.history.push({
-        pathname:'/training-request',
-        state:{
-          trainingSchedule,
-          scheduleDetails
-        }
-      })
+    handleRequestTraining = (ts,s)=>{
+      
     }
 
+    // Toggle untuk display schedule details 
     handleToggleShown= id=>{
         const shownState = this.state.detailsShown.slice();
         const index = shownState.indexOf(id);
@@ -102,8 +95,7 @@ class ListTrainingScheduleComponent extends Component {
                           <td className="column2" colSpan="2">{s.location}</td>
                           <td className="column4">{s.speakerName}</td>
                           <td className="column5">{s.price}</td>
-                          {/* ralat, ini bukan linkPDF tapi untuk training request */}
-                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts.subjectName,s)}><i class="fa fa-edit"></i></button></td>
+                          <td className="column6"><button className="btn" onClick={()=>this.handleRequestTraining(ts,s)}><i className="fa fa-arrow-down"></i></button></td>
                         </tr>
                       )
                       )}
