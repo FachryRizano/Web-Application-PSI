@@ -7,7 +7,7 @@ export default function LeftNavbarMenu(props){
             <Button icon={props.icon} text={props.text}/>
             {props.data.map((p,index)=>
                 <Button keys={index} text={p}/>
-                 
+
             )}
         </div>
     );

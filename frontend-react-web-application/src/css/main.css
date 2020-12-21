@@ -189,3 +189,23 @@ background: #36304a;
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+
+
+#popup-1{
+  width: 60vw;
+}
+
+.sidebarCustom button {
+  width: 100%;
+  text-align: left;
+}
+
+.sidebarCustom span.container {
+  padding: 0;
+}
+
+.customTrainingRequestFormLabelSpacing{
+  width: 200px;
+  display: inline-block;
+}
