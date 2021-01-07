@@ -36,10 +36,7 @@ class TrainingRequestComponent extends Component {
     }
 
     handleTraining = (trainingSchedule)=>{
-        this.setState({
-            trainingSchedule:trainingSchedule,
-        })
-        console.log(this.state.trainingSchedule)
+        console.log(trainingSchedule)
     }
 
     handleSchedule = (scheduleDetails)=>{

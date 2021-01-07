@@ -5,12 +5,13 @@ import AuthService from "../../services/auth/auth.service";
 
 class ListTrainingScheduleComponent extends Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state={
             trainingSchedules:[],
             getCurrentUser:AuthService.getCurrentUser(),
             detailsShown:[],
         }
+        this.handleRequestTraining.bind(this)
     }
 
     componentDidMount(){
@@ -28,7 +29,8 @@ class ListTrainingScheduleComponent extends Component {
     }
 
     handleRequestTraining = (ts,s)=>{
-      
+      this.props.trainingSchedule(ts)
+      this.props.scheduleDetails(s)
     }
 
     // Toggle untuk display schedule details 
