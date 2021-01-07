@@ -4,6 +4,13 @@ import TrainingRequestService from '../../services/TrainingRequest/TrainingReque
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
+<<<<<<< HEAD
+=======
+
+import ListTrainingSchedule from "../TrainingSchedule/ListTrainingScheduleComponent";
+
+
+>>>>>>> 899c78f0cd7b2a23b72a157ab0265f08dc526297
 import Popup from 'reactjs-popup';
 import ListTrainingSchedule from '../TrainingSchedule/ListTrainingScheduleComponent';
 
