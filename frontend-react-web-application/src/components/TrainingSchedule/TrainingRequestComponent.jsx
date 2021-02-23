@@ -4,13 +4,6 @@ import TrainingRequestService from '../../services/TrainingRequest/TrainingReque
 import LeftNavbarMenu from '../LeftNavbarMenu';
 import Button from '../Button';
 import logo from '../../image/logo.jpg';
-<<<<<<< HEAD
-=======
-
-import ListTrainingSchedule from "../TrainingSchedule/ListTrainingScheduleComponent";
-
-
->>>>>>> 899c78f0cd7b2a23b72a157ab0265f08dc526297
 import Popup from 'reactjs-popup';
 import ListTrainingSchedule from '../TrainingSchedule/ListTrainingScheduleComponent';
 
@@ -179,13 +172,13 @@ class TrainingRequestComponent extends Component {
                                                     <option value="2021">2021</option>
                                                 </select>
                                             </label>
-                                            <Popup trigger={<button type="button"> Table</button>} position="right center">
+                                            {/* <Popup trigger={<button type="button"> Table</button>} position="right center">
                                                 <div>
                                                     <ListTrainingSchedule 
                                                     trainingSchedule={this.handleTraining}
                                                     scheduleDetails={this.handleSchedule}/>
                                                 </div>
-                                            </Popup>
+                                            </Popup> */}
                                             
                                             <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
                                             
