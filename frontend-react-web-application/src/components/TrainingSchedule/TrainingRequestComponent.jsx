@@ -13,11 +13,11 @@ class TrainingRequestComponent extends Component {
         this.state={
             user:authService.getCurrentUser(),
             userDetails:[],
-            trainingSchedule:{},
-            scheduleDetails:{},
+            // trainingSchedule:{},
+            // scheduleDetails:{},
             ukuranKaos:"",
             noHP:"",
-            seen:false
+            // seen:false
         }
     }
 
@@ -180,16 +180,16 @@ class TrainingRequestComponent extends Component {
                                                 </div>
                                             </Popup> */}
                                             
-                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={trainingSchedule.subjectName}/></label>
+                                            <label>Subject:<input className="ml-3" type="text" name="" disabled="true" value={this.props.scheduleDetails}/></label>
                                             
-                                            <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={trainingSchedule.code}/></label>
-                                            <label>Group:<input className="border-0"type="text" name="kelompok" value={trainingSchedule.kelompok}/></label>
-                                            <label>Duration:<input className="border-0"type="text" name="duration" value={trainingSchedule.duration}/></label>
-                                            <label>Investment(IDR):<input className="border-0"type="text" name="price" value={scheduleDetails.price}/></label>
-                                            <label>Date:<input className="border-0"type="text" name="date" value={scheduleDetails.date}/></label>
-                                            <label>Area Training:<input className="border-0"type="text" name="location" value={scheduleDetails.location}/></label>
-                                            <label>Trainer:<input className="border-0"type="text" name="speakerName" value={scheduleDetails.speakerName}/></label>
-                                            <label>Vendor:<input className="border-0"type="text" name="kelompok" value={scheduleDetails.vendor}/></label>
+                                            <label>Training Code:<input className="border-0"type="text" name="trainingCode" value={this.props.trainingSchedule.code}/></label>
+                                            <label>Group:<input className="border-0"type="text" name="kelompok" value={this.props.trainingSchedule.kelompok}/></label>
+                                            <label>Duration:<input className="border-0"type="text" name="duration" value={this.props.trainingSchedule.duration}/></label>
+                                            <label>Investment(IDR):<input className="border-0"type="text" name="price" value={this.props.scheduleDetails.price}/></label>
+                                            <label>Date:<input className="border-0"type="text" name="date" value={this.props.scheduleDetails.date}/></label>
+                                            <label>Area Training:<input className="border-0"type="text" name="location" value={this.props.scheduleDetails.location}/></label>
+                                            <label>Trainer:<input className="border-0"type="text" name="speakerName" value={this.props.scheduleDetails.speakerName}/></label>
+                                            <label>Vendor:<input className="border-0"type="text" name="kelompok" value={this.props.scheduleDetails.vendor}/></label>
                                         </div>
                                     </div>
                                 </form>
