@@ -30,8 +30,8 @@ class ListTrainingScheduleComponent extends Component {
 
     handleRequestTraining = (subjectName,scheduleDetails)=>{
 
-      this.props.trainingSchedule(ts)
-      this.props.scheduleDetails(s)
+    //   this.props.trainingSchedule(ts)
+    //   this.props.scheduleDetails(s)
       this.props.history.push({
         pathname:'/training-request',
         state:{
@@ -117,7 +117,7 @@ class ListTrainingScheduleComponent extends Component {
                                                 <button
                                                     className="btn"
                                                     onClick={() =>
-                                                        this.handleRequestTraining(ts, s)
+                                                        this.handleRequestTraining(ts.subjectName, s)
                                                     }
                                                 >
                                                     <i className="fa fa-arrow-down"></i>
