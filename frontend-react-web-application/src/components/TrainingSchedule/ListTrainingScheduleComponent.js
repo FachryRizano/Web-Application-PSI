@@ -28,10 +28,17 @@ class ListTrainingScheduleComponent extends Component {
         }
     }
 
-    handleRequestTraining = (ts,s)=>{
+    handleRequestTraining = (subjectName,scheduleDetails)=>{
 
       this.props.trainingSchedule(ts)
       this.props.scheduleDetails(s)
+      this.props.history.push({
+        pathname:'/training-request',
+        state:{
+          subjectName,
+          scheduleDetails
+        }
+      })
     }
 
     // Toggle untuk display schedule details
